@@ -1,6 +1,7 @@
-﻿using GGPuntoYComa.SSO.BusinesLogic.Helpers;
-using GGPuntoYComa.SSO.BusinesLogic.Model.Identity;
-using GGPuntoYComa.SSO.DataBaseBusiness.Business;
+﻿using GG.SSO.DataBaseBusiness.Business;
+using GG.SSO.BusinesLogic.Helpers;
+using GG.SSO.BusinesLogic.Model.Identity;
+using GG.SSO.DataBaseBusiness.Business;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,7 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Transactions;
 
-namespace GGPuntoYComa.SSO.BusinesLogic.Identity
+namespace GG.SSO.BusinesLogic.Identity
 {
     public class RoleStore : IRoleStore<ApplicationAreaRole>, IRoleClaimStore<ApplicationAreaRole>
     {

@@ -1,5 +1,5 @@
-﻿using GGPuntoYComa.SSO.DataBaseBusiness.Sentences;
-using GGPuntoYComa.SSO.Entity.Table.Sso;
+﻿using GG.SSO.DataBaseBusiness.Sentences;
+using GG.SSO.Entity.Table.Sso;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.DataBaseBusiness.Business
+namespace GG.SSO.DataBaseBusiness.Business
 {
     public class UsersClientsBusiness
     {
@@ -77,7 +77,7 @@ namespace GGPuntoYComa.SSO.DataBaseBusiness.Business
             try
             {
                 return usersId.Any() ? UsersClients.Read(_usersClientsSentences.AddInCliteriByUsers_Id(usersId)
-                                                                               .GetCriteriaCollection()) 
+                                                                               .GetCriteriaCollection())
                     : new List<UsersClients>();
             }
             catch (Exception ex)

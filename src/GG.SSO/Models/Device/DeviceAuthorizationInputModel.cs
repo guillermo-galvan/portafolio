@@ -1,10 +1,10 @@
-﻿using GGPuntoYComa.SSO.Models.Consent;
+﻿using GG.SSO.Models.Consent;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.Models.Device
+namespace GG.SSO.Models.Device
 {
     public class DeviceAuthorizationInputModel : ConsentInputModel
     {

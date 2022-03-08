@@ -1,7 +1,7 @@
-﻿using GGPuntoYComa.SSO.Entity.Table.Sso;
+﻿using GG.SSO.Entity.Table.Sso;
 using System.Collections.Generic;
 
-namespace GGPuntoYComa.SSO.BusinesLogic.Model.Identity
+namespace GG.SSO.BusinesLogic.Model.Identity
 {
     public class ApplicationUser
     {

@@ -1,11 +1,11 @@
 using Duende.IdentityServer;
 using Duende.IdentityServer.Services;
 using Duende.IdentityServer.Stores;
-using GGPuntoYComa.SSO.BusinesLogic;
-using GGPuntoYComa.SSO.BusinesLogic.Identity;
-using GGPuntoYComa.SSO.BusinesLogic.Model.Identity;
-using GGPuntoYComa.SSO.Models;
-using GGPuntoYComa.SSO.Store.IdentityServer;
+using GG.SSO.BusinesLogic;
+using GG.SSO.BusinesLogic.Identity;
+using GG.SSO.BusinesLogic.Model.Identity;
+using GG.SSO.Models;
+using GG.SSO.Store.IdentityServer;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,7 +22,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO
+namespace GG.SSO
 {
     public class Startup
     {

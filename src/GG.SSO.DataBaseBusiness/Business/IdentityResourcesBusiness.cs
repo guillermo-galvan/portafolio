@@ -1,21 +1,21 @@
-﻿using GGPuntoYComa.SSO.DataBaseBusiness.Sentences;
-using GGPuntoYComa.SSO.Entity.Table.Sso;
+﻿using GG.SSO.DataBaseBusiness.Sentences;
+using GG.SSO.Entity.Table.Sso;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace GGPuntoYComa.SSO.DataBaseBusiness.Business
+namespace GG.SSO.DataBaseBusiness.Business
 {
     public class IdentityResourcesBusiness
     {
         private readonly ILogger<IdentityResourcesBusiness> _logger;
-        private readonly IdentityResourcesSentences _identityResourcesSentences;        
+        private readonly IdentityResourcesSentences _identityResourcesSentences;
 
-        public IdentityResourcesBusiness(ILogger<IdentityResourcesBusiness> logger, 
+        public IdentityResourcesBusiness(ILogger<IdentityResourcesBusiness> logger,
             IdentityResourcesSentences identityResourcesSentences)
         {
-            _logger = logger;            
+            _logger = logger;
             _identityResourcesSentences = identityResourcesSentences;
         }
 
@@ -46,6 +46,6 @@ namespace GGPuntoYComa.SSO.DataBaseBusiness.Business
             }
         }
 
-        
+
     }
 }

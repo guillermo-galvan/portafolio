@@ -1,4 +1,4 @@
-﻿using GGPuntoYComa.SSO.BusinesLogic.Model.Identity;
+﻿using GG.SSO.BusinesLogic.Model.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using System;
@@ -8,9 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.Security.Claims;
-using GGPuntoYComa.SSO.DataBaseBusiness.Business;
+using GG.SSO.DataBaseBusiness.Business;
+using GG.SSO.DataBaseBusiness.Business;
 
-namespace GGPuntoYComa.SSO.BusinesLogic.Identity
+namespace GG.SSO.BusinesLogic.Identity
 {
     public class UserManagement
     {

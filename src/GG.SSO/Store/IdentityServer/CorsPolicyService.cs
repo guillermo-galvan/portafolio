@@ -1,13 +1,13 @@
 ﻿using Duende.IdentityServer.Services;
-using GGPuntoYComa.SSO.BusinesLogic.IdentityServer;
-using GGPuntoYComa.SSO.DataBaseBusiness.Business;
+using GG.SSO.BusinesLogic.IdentityServer;
+using GG.SSO.DataBaseBusiness.Business;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.Store.IdentityServer
+namespace GG.SSO.Store.IdentityServer
 {
     public class CorsPolicyService : ICorsPolicyService
     {

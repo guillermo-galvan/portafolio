@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.Entity.Table.Sso
+namespace GG.SSO.Entity.Table.Sso
 {
 	[DataClassCRUD("sso", "clients")]
 	public class ClientsBasic : Entity<ClientsBasic>

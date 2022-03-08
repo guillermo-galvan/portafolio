@@ -1,12 +1,12 @@
-﻿using GGPuntoYComa.SSO.DataBaseBusiness.Sentences;
-using GGPuntoYComa.SSO.Entity.Table.Sso;
+﻿using GG.SSO.DataBaseBusiness.Sentences;
+using GG.SSO.Entity.Table.Sso;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace GGPuntoYComa.SSO.DataBaseBusiness.Business
+namespace GG.SSO.DataBaseBusiness.Business
 {
     public class ClientCorsOriginsBusiness
     {

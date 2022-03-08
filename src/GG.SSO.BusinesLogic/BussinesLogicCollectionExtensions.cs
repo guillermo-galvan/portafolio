@@ -1,7 +1,7 @@
-﻿using GGPuntoYComa.SSO.BusinesLogic.Identity;
-using GGPuntoYComa.SSO.BusinesLogic.IdentityServer;
-using GGPuntoYComa.SSO.BusinesLogic.Model.Identity;
-using GGPuntoYComa.SSO.DataBaseBusiness;
+﻿using GG.SSO.DataBaseBusiness;
+using GG.SSO.BusinesLogic.Identity;
+using GG.SSO.BusinesLogic.IdentityServer;
+using GG.SSO.BusinesLogic.Model.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.BusinesLogic
+namespace GG.SSO.BusinesLogic
 {
     public static class BussinesLogicCollectionExtensions
     {

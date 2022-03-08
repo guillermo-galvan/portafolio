@@ -1,4 +1,4 @@
-﻿namespace GGPuntoYComa.SSO.Models
+﻿namespace GG.SSO.Models
 {
     public class ExternalAuthentication
     {

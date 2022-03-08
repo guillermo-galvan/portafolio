@@ -3,9 +3,9 @@ using Duende.IdentityServer.Extensions;
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Services;
 using Duende.IdentityServer.Validation;
-using GGPuntoYComa.SSO.Filters;
-using GGPuntoYComa.SSO.Helpers;
-using GGPuntoYComa.SSO.Models.Consent;
+using GG.SSO.Filters;
+using GG.SSO.Helpers;
+using GG.SSO.Models.Consent;
 using IdentityModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.Controllers.Consent
+namespace GG.SSO.Controllers.Consent
 {
     [SecurityHeaders]
     [Authorize]

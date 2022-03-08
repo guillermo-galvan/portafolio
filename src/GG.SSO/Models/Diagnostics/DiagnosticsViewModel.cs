@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.Models.Diagnostics
+namespace GG.SSO.Models.Diagnostics
 {
     public class DiagnosticsViewModel
     {

@@ -1,6 +1,5 @@
 ﻿using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Stores;
-using GGPuntoYComa.SSO.DataBaseBusiness.Business;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -8,9 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
-using GGPuntoYComa.SSO.BusinesLogic.Helpers;
+using GG.SSO.BusinesLogic.Helpers;
+using GG.SSO.DataBaseBusiness.Business;
 
-namespace GGPuntoYComa.SSO.BusinesLogic.IdentityServer
+namespace GG.SSO.BusinesLogic.IdentityServer
 {
     public class PersistedGrantsManagement
     {

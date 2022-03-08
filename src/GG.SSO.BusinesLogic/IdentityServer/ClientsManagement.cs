@@ -1,8 +1,7 @@
 ﻿using Duende.IdentityServer.Models;
-using GGPuntoYComa.SSO.BusinesLogic.Helpers;
-using GGPuntoYComa.SSO.DataBaseBusiness;
-using GGPuntoYComa.SSO.DataBaseBusiness.Business;
-using GGPuntoYComa.SSO.Entity.Table.Sso;
+using GG.SSO.BusinesLogic.Helpers;
+using GG.SSO.DataBaseBusiness.Business;
+using GG.SSO.Entity.Table.Sso;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,8 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using GG.SSO.DataBaseBusiness;
 
-namespace GGPuntoYComa.SSO.BusinesLogic.IdentityServer
+namespace GG.SSO.BusinesLogic.IdentityServer
 {
     public class ClientsManagement
     {

@@ -1,8 +1,8 @@
 ﻿using Duende.IdentityServer.Models;
-using GGPuntoYComa.SSO.BusinesLogic.Helpers;
-using GGPuntoYComa.SSO.DataBaseBusiness;
-using GGPuntoYComa.SSO.DataBaseBusiness.Business;
-using GGPuntoYComa.SSO.DataBaseBusiness.Sentences;
+using GG.SSO.DataBaseBusiness;
+using GG.SSO.BusinesLogic.Helpers;
+using GG.SSO.DataBaseBusiness.Business;
+using GG.SSO.DataBaseBusiness.Sentences;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,7 +12,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.BusinesLogic.IdentityServer
+namespace GG.SSO.BusinesLogic.IdentityServer
 {
     public class ApiResourcesManagement
     {

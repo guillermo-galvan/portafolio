@@ -1,7 +1,7 @@
 using System.Data.CRUD;
 using MySql.Data.MySqlClient;
 
-namespace GGPuntoYComa.SSO.Entity.Table.Sso
+namespace GG.SSO.Entity.Table.Sso
 {
     [DataClassCRUD("sso","userclaims")]
 	public class UserClaims : Entity<UserClaims>

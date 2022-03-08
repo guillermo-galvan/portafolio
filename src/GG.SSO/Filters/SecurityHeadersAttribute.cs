@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.Filters
+namespace GG.SSO.Filters
 {
     public class SecurityHeadersAttribute : ActionFilterAttribute
     {

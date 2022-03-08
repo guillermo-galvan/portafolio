@@ -2,7 +2,7 @@ using System;
 using System.Data.CRUD;
 using MySql.Data.MySqlClient;
 
-namespace GGPuntoYComa.SSO.Entity.Table.Sso
+namespace GG.SSO.Entity.Table.Sso
 {
 	[DataClassCRUD("sso","devicecodes")]
 	public class Devicecodes : Entity<Devicecodes>
