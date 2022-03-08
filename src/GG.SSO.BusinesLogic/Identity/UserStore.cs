@@ -1,7 +1,6 @@
 ﻿using GG.SSO.DataBaseBusiness.Business;
 using GG.SSO.BusinesLogic.Helpers;
 using GG.SSO.BusinesLogic.Model.Identity;
-using GG.SSO.DataBaseBusiness.Business;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using System;

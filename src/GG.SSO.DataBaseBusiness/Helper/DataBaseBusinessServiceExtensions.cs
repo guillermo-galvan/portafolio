@@ -1,7 +1,6 @@
 ﻿using GG.SSO.DataBaseBusiness.Business;
 using GG.SSO.DataBaseBusiness.Sentences;
 using GG.SSO.DataBaseBusiness;
-using GG.SSO.DataBaseBusiness.Business;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
