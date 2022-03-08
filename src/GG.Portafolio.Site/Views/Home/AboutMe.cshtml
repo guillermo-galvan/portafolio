@@ -1,0 +1,188 @@
+﻿<script type="text/javascript">    
+    loadedPartView();
+    function loadedPartView() {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+
+        var links = document.querySelectorAll('[class="list-group-item list-group-item-action list-group-item-dark"]');
+
+        for (var i = 0; i < links.length; i++) {
+            links[i].addEventListener("click", function (e) {
+                e.preventDefault();
+                return false;
+            });
+        }
+    }
+</script>
+
+<div class="row">
+    <div class="col text-center header">
+        Sobre <span class="color-text-red">Mí</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center header-caption">
+        <span class="header-caption">Conoce un poco de <span class="color-text-red">mí.</span></span>
+    </div>
+</div>
+
+<div class="row g-0 about">
+    <div class="col-md-5 offset-md-1 about-orden-1">
+        <span class="first-line">
+            Soy un
+            <span class="color-text-red">desarrollador de software</span>
+            con recidencia en Querétaro, México
+        </span>
+        <br /><br />
+        <span class="second-line">
+            Cuento con más de 10 años de experiencia como desarrollador de software profesional, durante este tiempo he adquirido las habilidades y conocimientos necesarios para que su proyecto sea exitoso.
+            <br />            
+            <br /> 
+            Contácteme y plaquemos sobre tu proyecto, veamos la forma de poder colaborar juntos.
+        </span>
+    </div>
+    <div class="col-md-5 about-img about-orden-2">
+        <img src="~/images/IMG_2325_1.jpg" alt="my image">
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="row">
+    <div class="col text-center header">
+        Mis <span class="color-text-red">conocimientos</span>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="row g-4 about">
+
+    <div class="col-md-3 offset-md-1 service">
+        <div class="service-img">
+            <img src="~/images/coding.png" alt="service-one">
+        </div>
+        <div class="service-description">
+            <h2>Frontend</h2>
+            <p>Creación y mantenimiento de páginas, sitios y aplicaciones web.</p>
+        </div>
+    </div>
+
+    <div class="col-md-3 service">
+        <div class="service-img">
+            <img src="~/images/backend.png" alt="service-two">
+        </div>
+        <div class="service-description">
+            <h2>Backend</h2>
+            <p>Creación y mantenimiento de web api (restful), web services y WCF (Windows Communication Foundation)</p>
+        </div>
+    </div>
+
+    <div class="col-md-3 service">
+        <div class="service-img">
+            <img src="~/images/desktop.png" alt="service-three">
+        </div>
+        <div class="service-description">
+            <h2>Desktop</h2>
+            <p>Creación y mantenimiento de aplicaciones de escritorio, especializado en tecnologías Microsoft (window form, wpf, windws services y consola).</p>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="row">
+    <div class="col text-center header">
+        Mis <span class="color-text-red">Habilidades</span>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="row g-0 about" onload="loaded" id="divPruebas">
+
+    <div class="col-md-4 offset-md-4">
+        <div class="list-group list-group-horizontal-sm">
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"
+               data-bs-toggle="tooltip" data-bs-placement="top" title="C#">
+                <img src="~/images/languages/csharp.png" class="rounded img-thumbnail" alt="C#" />
+            </a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"
+               data-bs-toggle="tooltip" data-bs-placement="top" title="SQL Server">
+                <img src="~/images/languages/sql server.png" class="rounded img-thumbnail" alt="SQL Server" />
+            </a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"
+               data-bs-toggle="tooltip" data-bs-placement="top" title="Visual Studio">
+                <img src="~/images/languages/vs.png" class="rounded img-thumbnail" alt="Visual Studio"/>
+            </a>
+        </div>
+
+        <div class="list-group list-group-horizontal-sm">
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"
+               data-bs-toggle="tooltip" data-bs-placement="top" title="HTML">
+                <img src="~/images/languages/html.png" class="rounded img-thumbnail" alt="HTML"/>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"
+               data-bs-toggle="tooltip" data-bs-placement="top" title="JavaScript">
+                <img src="~/images/languages/js.png" class="rounded img-thumbnail" alt="Javascript" />
+            </a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"
+               data-bs-toggle="tooltip" data-bs-placement="top" title="HTML">
+                <img src="~/images/languages/css.png" class="rounded img-thumbnail" alt="CSS"/>
+            </a>
+        </div>
+
+        <div class="list-group list-group-horizontal-sm">
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"
+               data-bs-toggle="tooltip" data-bs-placement="top" title="MySql">
+                <img src="~/images/languages/mysql.png" class="rounded img-thumbnail" alt="MySql"/>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"
+               data-bs-toggle="tooltip" data-bs-placement="top" title="SQLite">
+                <img src="~/images/languages/sqlite.png" class="rounded img-thumbnail" alt="Sqlite"/>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"
+               data-bs-toggle="tooltip" data-bs-placement="top" title="Java">
+                <img src="~/images/languages/Java.png" class="rounded img-thumbnail" alt="Java"/>
+            </a>
+        </div>
+
+        <div class="list-group list-group-horizontal-sm">
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"
+               data-bs-toggle="tooltip" data-bs-placement="top" title="Bootstrap">
+                <img src="~/images/languages/bootstrap.png" class="rounded img-thumbnail" alt="Bootstrap"/>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"
+               data-bs-toggle="tooltip" data-bs-placement="top" title="JQuery">
+                <img src="~/images/languages/jquery.png" class="rounded img-thumbnail" alt="JQuery"/>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"
+               data-bs-toggle="tooltip" data-bs-placement="top" title="Sass">
+                <img src="~/images/languages/sass.png" class="rounded img-thumbnail" alt="Sass"/>
+            </a>
+        </div>
+
+        <div class="list-group list-group-horizontal-sm">
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"
+               data-bs-toggle="tooltip" data-bs-placement="top" title="TypeScript">
+                <img src="~/images/languages/typescript.svg" class="rounded img-thumbnail" alt="TypeScript"/>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"
+               data-bs-toggle="tooltip" data-bs-placement="top" title="Xamarin">
+                <img src="~/images/languages/xamarin.png" class="rounded img-thumbnail" alt="Xamarin"/>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark">
+                
+            </a>
+        </div>
+
+    </div>
+
+</div>

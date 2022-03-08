@@ -1,0 +1,6 @@
+﻿@import '../colors';
+
+@mixin backgroundcolor($valiable, $valor) {
+    background-color: $valor;
+    background-color: var(#{$variable-prefix}#{$valiable});
+}

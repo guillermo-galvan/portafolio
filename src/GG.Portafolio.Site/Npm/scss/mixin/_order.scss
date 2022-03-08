@@ -1,0 +1,9 @@
+﻿@mixin order($order, $ordermedia: 0, $visiblemedia: true) {
+    @if $visiblemedia {
+        order: $ordermedia !important;
+    }
+
+    @if not $visiblemedia {
+        display: none !important;
+    }
+}

@@ -1,0 +1,60 @@
+﻿@using GG.Portafolio.Shared.Blog
+@model List<List<BlogResponse>>;
+
+
+<div class="row">
+    <div class="col text-center header">
+         Blogs
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center header-caption">
+        <span class="header-caption">Mis últimas publicaciones de<span class="color-text-red"> blog.</span></span>
+    </div>
+</div>
+
+<br />
+
+@foreach(var item in Model)
+{
+    <div class="row g-0 about">
+        
+        <div class="col-md-5 offset-md-1 image">
+            <div class="blogs">
+                <a href="@(Url.Action("index","Blog", new {title = item[0].Title }))">
+                    <div class="img">
+                        <img src="~/images/post-one.jpg" alt="pruebas">
+                        <div class="blog-date">@(new DateTime(item[0].CreateDate).ToString("dd/MM/yyyy"))</div>
+                    </div>
+                    <div class="blog-text">
+                        <h3>@item[0].Title</h3>
+                        <p>
+                            @item[0].Dsc
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        @if (item.Count() == 2)
+        {
+            <div class="col-md-5 align-self-center">
+                 <div class="blogs">
+                    <a href="@(Url.Action("index","Blog", new {title = item[1].Title }))">
+                        <div class="img">
+                            <img src="~/images/portfolio-second.jpg" alt="pruebas">
+                            <div class="blog-date">@(new DateTime(item[1].CreateDate).ToString("dd/MM/yyyy"))</div>
+                        </div>
+                        <div class="blog-text">
+                            <h3>@item[1].Title</h3>
+                            <p>
+                                @item[1].Dsc
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+}

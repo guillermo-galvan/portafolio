@@ -1,0 +1,143 @@
+﻿@import '../mixin/mediaquery';
+@import '../colors';
+@import '../mixin/order';
+
+@for $order from 1 through 3 {
+    .home-order-#{$order} {
+        order: $order;
+        @if $order == 1 {
+            @include media-query-max-768() {
+                @include order($order, 2, true);
+            }
+        }
+        @else if $order == 2 {
+            @include media-query-max-768() {
+                @include order($order, 1, true);
+            }
+        }
+        @else if $order == 3 {
+            @include media-query-max-768() {
+                @include order($order, 0,false);
+            }
+        }
+    }
+}
+
+.social-media-links {
+    height: 80vh;
+    position: absolute;
+    z-index: 2;
+    padding: 1.5em;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include media-query-max-768() {
+        width: 100%;
+        left: 0;
+        bottom: 3em;
+        position: static;
+        padding: 10px;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.social-media {
+    color: $color-withe;
+    width: 21px;
+    opacity: .6;
+    margin: 8px;
+    transition: all .4s ease;
+
+    &:hover {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.header-content {
+    align-items: center;
+    justify-content: center;
+    color: $color-whitesmoke;
+    font-family: $raleway;
+    display: flex;
+    letter-spacing: 1px;
+    font-size: 3em;
+    z-index: 5;
+    height: calc(100vh - 20vh);
+    font-weight: 400;
+
+    .firstline {
+        z-index: 2;
+        font-weight: 700;
+        font-family: $poppins;
+        font-size: 1.4em;
+    }
+
+    .secondline {
+        z-index: 2;
+        font-size: 0.8em;
+        padding-top: 20px;
+        font-weight: 500;
+        color: $color-withe-rgba-08;
+    }
+}
+
+.header-content-box {
+    z-index: 2;
+    text-align: center;
+}
+
+.slash {
+    animation-name: animateslash;
+    animation-duration: .8s;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
+
+.contact {
+    display: flex;
+    position: absolute;
+    width: 10%;
+    right: 0;
+    top: 0;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 3;
+
+    a {
+        z-index: 3;
+    }
+
+    img {
+        margin: 10px;
+        height: 30px;
+        opacity: .6;
+        transition: all .4s ease;
+    }
+
+    img:hover {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.header-image {
+    background-image: url("https://localhost:44330/images/IMG_2314_1.jpg");
+    background-repeat: no-repeat;
+    background-size: 80vh;
+    background-position-x: right;
+    background-position-y: center;
+
+    @include media-query-max-768() {
+        background: none;
+    }
+}

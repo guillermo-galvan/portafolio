@@ -1,0 +1,106 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>95d9eeeb-2f86-4984-90b4-1c76bbdcfb12</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Npm\TypeScript\General\AnimateTransitionEvent.ts" />
+    <None Remove="Npm\TypeScript\General\Enum\AnimateTransitionEventType.ts" />
+    <None Remove="Npm\TypeScript\General\functions.ts" />
+    <None Remove="Npm\TypeScript\General\Observer\observer.ts" />
+    <None Remove="Npm\TypeScript\General\Observer\ObserverBlogType.ts" />
+    <None Remove="Npm\TypeScript\General\Observer\ObserverInnerHtml.ts" />
+    <None Remove="Npm\TypeScript\General\Observer\subjectBlogType.ts" />
+    <None Remove="Npm\TypeScript\General\Observer\subjectString.ts" />
+    <None Remove="Npm\TypeScript\General\page.ts" />
+    <None Remove="Npm\TypeScript\Interface\ILoadPage.ts" />
+    <None Remove="Npm\TypeScript\Interface\iNotify.ts" />
+    <None Remove="Npm\TypeScript\Types\AnimateTransitionEvent.ts" />
+    <None Remove="Npm\TypeScript\Types\AnimateTransitionType.ts" />
+    <None Remove="Npm\TypeScript\Types\BlogType.ts" />
+    <None Remove="Npm\TypeScript\Types\DeliveryMan.ts" />
+    <None Remove="Npm\TypeScript\Types\ElementRow.ts" />
+    <None Remove="Npm\TypeScript\Types\PageChangeAnimateCss.ts" />
+    <None Remove="Npm\TypeScript\Types\ResponseDealer.ts" />
+    <None Remove="Npm\TypeScript\Types\TimeCalculated.ts" />
+    <None Remove="Npm\TypeScript\Types\TimeList.ts" />
+    <None Remove="Npm\TypeScript\views\BlogManagement\newEditBlog.ts" />
+    <None Remove="Npm\TypeScript\views\blog\index.ts" />
+    <None Remove="Npm\TypeScript\views\Dealer\index.ts" />
+    <None Remove="Npm\TypeScript\views\TemplateWord\index.ts" />
+    <None Remove="Npm\TypeScript\views\Home\aboutMe.ts" />
+    <None Remove="Npm\TypeScript\views\Home\blog.ts" />
+    <None Remove="Npm\TypeScript\views\Home\home.ts" />
+    <None Remove="Npm\TypeScript\views\Home\Index.ts" />
+    <None Remove="Npm\TypeScript\views\Home\PageChange.ts" />
+    <None Remove="Npm\TypeScript\views\Home\portfolio.ts" />
+    <None Remove="Npm\TypeScript\views\other.modul.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Npm\scss\site.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\images\languages\" />
+    <Folder Include="wwwroot\lib\" />
+    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GG.Portafolio.Share\GG.Portafolio.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Npm\TypeScript\General\animateTransitionEvent.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\General\Enum\AnimateTransitionEventType.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\General\functions.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\General\Observer\observer.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\General\Observer\ObserverBlogType.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\General\Observer\observerInnerHtml.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\General\Observer\subjectBlogType.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\General\Observer\subjectString.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\General\page.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\Interface\iLoadPage.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\Interface\iNotify.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\Types\AnimateTransitionEvent.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\Types\AnimateTransitionType.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\Types\BlogType.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\Types\DeliveryMan.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\Types\ElementRow.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\Types\PageChangeAnimateCss.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\Types\ResponseDealer.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\Types\TimeCalculated.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\Types\TimeList.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\views\BlogManagement\newEditBlog.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\views\blog\index.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\views\Dealer\index.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\views\TemplateWord\index.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\views\Home\aboutMe.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\views\Home\blog.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\views\Home\home.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\views\Home\index.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\views\Home\PageChange.ts" />
+    <TypeScriptCompile Include="Npm\TypeScript\views\Home\portfolio.ts" />
+  </ItemGroup>
+
+  <Target Name="Install NPM modules" BeforeTargets="Build" Inputs="package-lock.json" Outputs="node_modules/.install-stamp">
+    <Exec Command="npm ci" Condition="'$(OS)' != 'Windows_NT'" />
+    <Exec Command="npm install" Condition="'$(OS)' == 'Windows_NT'" />
+    <Touch Files="node_modules/.install-stamp" AlwaysCreate="true" />
+  </Target>
+
+  <Target Name="Compile SCSS" BeforeTargets="CopyFilesToPublishDirectory">
+    <Exec Command="npm run build:css" />
+    <Copy SourceFiles="$(ProjectDir)wwwroot/css/site.css" DestinationFolder="$(PublishDir)wwwroot/css" />
+  </Target>
+  
+</Project>

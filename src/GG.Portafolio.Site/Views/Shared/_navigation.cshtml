@@ -1,0 +1,47 @@
+﻿@using GG.Portafolio.Shared;
+
+@{
+    var isHome = ViewBag.Home ?? false;
+}
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <div class="container-fluid">
+        <a asp-area="" asp-controller="Home" asp-action="Index">
+            <img class="navbar-brand" src="~/images/logo.png" alt="logo">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" 
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" id="btnNvarToggle">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a href="@(isHome ? "#home" : Url.Action("RedirectMenu","home", new {url = "home"}))" class="nav-link main-menu-page">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="@(isHome ? "#aboutme" : Url.Action("RedirectMenu","home", new {url = "aboutme"}))" class="nav-link main-menu-page">Sobre mí</a>
+                </li>
+                <li class="nav-item">
+                    <a href="@(isHome ? "#blog" : Url.Action("RedirectMenu","home", new {url = "blog"}))" class="nav-link main-menu-page">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="@(isHome ? "#portfolio" : Url.Action("RedirectMenu","home", new {url = "portfolio"}))" class="nav-link main-menu-page">Portafolio</a>
+                </li>
+                @if(Context.User.Claims.Any())
+                {   
+                    @if (Context.User.HasClaim("user_role",Policy.PolicyAdmin) && Context.User.HasClaim("user_area","Owner"))
+                    {
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","BlogManagement")" class="nav-link main-menu-page">Administración del blog</a>
+                        </li>
+                    }
+
+                    <li class="nav-item">
+                        <a href="@Url.Action("Logout","Account")" class="nav-link main-menu-page">Log out</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,8 @@
+﻿@import 'colors';
+@import 'fallbacks/background_color';
+@import 'functions';
+
+footer {
+    @include backgroundcolor(findkey-map-by-value($colors,$color-footer),$color-footer);
+    font-size: 1em;
+}

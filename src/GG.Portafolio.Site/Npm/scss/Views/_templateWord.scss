@@ -1,0 +1,42 @@
+﻿@import '../_colors';
+@import '../fallbacks/_color';
+
+.title-project {
+    opacity: 0.9;
+    font-size: 18px;
+    font-weight: 200;    
+    @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+    font-family: $poppins;
+}
+
+.template {
+
+    div > span {
+        @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+        font-size: 16px;
+        font-weight: 200;
+        font-family: $poppins;
+        opacity: 0.9;
+    }
+
+    .btn-primary{
+        opacity:0.8;
+
+        &:hover{
+            opacity:1;
+        }
+
+    }
+}
+
+form {
+    width: 99%;
+
+    .btn-primary {
+        opacity: 0.8;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

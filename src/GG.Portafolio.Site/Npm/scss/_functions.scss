@@ -1,0 +1,12 @@
+﻿@function findkey-map-by-value($map, $findvalue){
+    $return : null;
+
+    @each $name,$value in $map {
+
+        @if $value == $findvalue{
+            $return : $name;
+        }
+    }
+
+    @return $return;
+}

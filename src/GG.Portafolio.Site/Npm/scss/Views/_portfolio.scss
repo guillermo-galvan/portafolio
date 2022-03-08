@@ -1,0 +1,114 @@
+﻿@import '../colors';
+@import '../fallbacks/background_color';
+@import '../fallbacks/color';
+@import '../mixin/mediaquery';
+
+.portfolio {
+    .image {
+        height: 500px;
+        width: 40%;
+
+        @include media-query-max-768() {
+            height: 380px;
+            width: 100%;
+        }
+
+        @include media-query-max-550() {
+            height: 300px;
+            width: 100%;
+        }
+
+        img {
+            height: 500px;
+            width: 100%;
+
+            @include media-query-max-768() {
+                height: 380px;
+                width: 100%;
+            }
+
+            @include media-query-max-550() {
+                height: 300px;
+                width: 100%;
+            }
+        }
+    }
+
+    .description {
+        padding-left: 1%;
+        margin: 1%;
+        margin-left: -40px;
+        z-index: 3;
+        @include backgroundcolor(findkey-map-by-value($colors,$color-footer),$color-footer);
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        h2 {
+            font-size: 35px;
+            font-family: $poppins;
+            font-weight: 200;
+            padding: 20px;
+            @include color(findkey-map-by-value($colors,$color-red),$color-red);
+            transition: all .4s ease;
+        }
+
+        p {
+            font-size: 16px;
+            opacity: .8;
+            font-family: $poppins;
+            font-weight: 200;
+            padding: 20px;
+            @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+        }
+
+        .button {
+            text-align: center;
+
+            .btn-primary {
+                font-size: 16px;
+                opacity: .8;
+                font-family: $poppins;
+                font-weight: 200;
+                padding: 10px 20px;
+                background: transparent;
+                @include color(findkey-map-by-value($colors,$color-red),$color-red);
+                transition: all .4s ease;
+                outline: none;
+                margin: 20px;
+                border: 1.5px solid #{$color-red};
+                cursor: pointer;
+                overflow: hidden;
+                position: relative;
+                transition: all .4s ease;
+
+                &:hover {
+                    opacity: 1;
+                    @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+                }
+
+                &:hover::before {
+                    opacity: 1;
+                    width: 120%;
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 0%;
+                    height: 200%;
+                    transform: rotate(-15deg) translateY(-20px);
+                    top: 0;
+                    left: 0;
+                    z-index: 3;
+                    background: $color-red;
+                    transition: all .7s ease;
+                }
+
+                .index {
+                    position: relative;
+                    z-index: 4;
+                }
+            }
+        }
+    }
+}

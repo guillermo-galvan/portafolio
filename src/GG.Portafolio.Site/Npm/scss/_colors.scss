@@ -1,0 +1,46 @@
+﻿$color-page: #171717;
+$color-footer: #080808;
+$color-navbar: #020202;
+$color-withe: #fff;
+$color-red: #c70039;
+$color-whitesmoke: whitesmoke;
+$color-background-control: #050505;
+$color-purple: #481380;
+$color-blue: #035aa6;
+$color-green: #04A777;
+
+
+$colors:( 
+    "color-page": $color-page, 
+    "color-footer": $color-footer, 
+    "color-navbar": $color-navbar, 
+    "color-text-red":$color-red,
+    "color-whitesmoke" : $color-whitesmoke,
+    "color-background-control" : $color-background-control,
+    "color-purple" : $color-purple,
+    "color-blue": $color-blue,
+    "color-green": $color-green
+);
+
+$variable-prefix: --gg-;
+
+$color-footer-rgba-05: rgba($color-footer,0.5);
+$color-page-rgba-1: rgba($color-page,1);
+
+$color-withe-rgba: rgba($color-withe, 1);
+$color-withe-rgba-08: rgba($color-withe, 0.8);
+$color-withe-rgba-0125: rgba($color-withe, 0.125);
+
+$color-whitesmoke-rgba-05: rgba($color-whitesmoke, 0.5);
+$color-whitesmoke-rgba-0125: rgba($color-whitesmoke, 0.125);
+
+$color-red-rgba-05: rgba($color-red, 0.5);
+
+$color-background-control-05: rgba($color-background-control,0.5);
+
+$color-footer-rgba-025: rgba($color-footer, 0.25);
+$color-footer-rgba-05: rgba($color-footer, 0.5);
+
+$poppins: poppins;
+$raleway: raleway;
+$aileron: aileron;

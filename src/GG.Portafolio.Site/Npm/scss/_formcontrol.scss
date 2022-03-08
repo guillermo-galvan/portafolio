@@ -1,0 +1,23 @@
+﻿@import 'fallbacks/color';
+@import 'fallbacks/background_color';
+@import 'colors';
+
+.form-control {
+    @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+    @include backgroundcolor(findkey-map-by-value($colors,$color-background-control),$color-background-control);
+    font-family: $poppins;
+    font-size: 16px;
+    border: 1px solid $color-background-control;
+
+    &:focus {
+        @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+        @include backgroundcolor(findkey-map-by-value($colors,$color-background-control),$color-background-control);
+        border-color: $color-background-control;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem #{$color-background-control-05};
+    }
+
+    &:disabled, &[readonly] {
+        @include backgroundcolor(findkey-map-by-value($colors,$color-page),$color-page);
+    }
+}

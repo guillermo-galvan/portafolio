@@ -1,0 +1,8 @@
+﻿@import 'fallbacks/_color';
+@import '_colors';
+
+.col-form-label {
+    @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+    font-family: $poppins;
+
+}

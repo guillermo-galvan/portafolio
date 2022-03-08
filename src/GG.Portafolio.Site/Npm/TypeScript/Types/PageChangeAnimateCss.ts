@@ -1,0 +1,1 @@
+﻿export type PageChangeAnimateCss = "begin-transition-animate" | "end-transition-animate" | "transition-left-0" | "transition-left-lessthan-100" | "transition-left-greaterthan-100";
