@@ -1,0 +1,12 @@
+﻿@import '../fallbacks/_color';
+
+.blog-management {
+
+    div > span {
+        @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+        font-size: 16px;
+        font-weight: 200;
+        font-family: $poppins;
+        opacity: 0.9;
+    }
+}

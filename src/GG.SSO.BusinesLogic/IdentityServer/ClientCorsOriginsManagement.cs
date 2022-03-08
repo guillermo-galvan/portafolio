@@ -1,4 +1,4 @@
-﻿using GGPuntoYComa.SSO.DataBaseBusiness.Business;
+﻿using GG.SSO.DataBaseBusiness.Business;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using Microsoft.Extensions.Caching.Memory;
-using GGPuntoYComa.SSO.DataBaseBusiness;
+using GG.SSO.DataBaseBusiness;
 
-namespace GGPuntoYComa.SSO.BusinesLogic.IdentityServer
+namespace GG.SSO.BusinesLogic.IdentityServer
 {
     public class ClientCorsOriginsManagement
     {

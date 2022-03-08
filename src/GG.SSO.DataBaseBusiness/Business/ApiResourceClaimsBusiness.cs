@@ -1,11 +1,11 @@
-﻿using GGPuntoYComa.SSO.DataBaseBusiness.Sentences;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using GGPuntoYComa.SSO.Entity.Table.Sso;
+using GG.SSO.Entity.Table.Sso;
+using GG.SSO.DataBaseBusiness.Sentences;
 
-namespace GGPuntoYComa.SSO.DataBaseBusiness.Business
+namespace GG.SSO.DataBaseBusiness.Business
 {
     public class ApiResourceClaimsBusiness
     {

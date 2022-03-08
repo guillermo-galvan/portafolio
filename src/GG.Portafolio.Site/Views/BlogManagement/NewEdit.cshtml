@@ -1,0 +1,151 @@
+﻿@model BlogManagementModel
+
+@{
+    ViewData["Title"] = $"Management Blog {ViewData["Operation"]}";
+    IEnumerable<string> Errores = ViewBag.ListError ?? new List<string>();
+}
+
+<div class="row">
+    <div class="col text-center header">
+        Administración del <span class="color-text-red">- Blog</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center header-caption">
+        <span class="header-caption">Operación <span class="color-text-red">@ViewData["Operation"]</span></span>
+    </div>
+</div>
+
+<br />
+<br />
+
+<form asp-action="Save" asp-controller="BlogManagement" asp-antiforgery="true" method="post" class="needs-validation" novalidate>
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="CreateDate" />
+    <input type="hidden" asp-for="Images" />
+
+    @foreach (var item in Errores)
+    {
+        <div class="row">
+            <div class="col-md-5 offset-md-1 text-start">
+                <label class="col-form-label">@Html.Raw(item)</label>
+            </div>
+        </div>
+    }
+
+    <div class="row g-5">
+        <div class="col-md-5 offset-md-1 text-end">
+            <label asp-for="CreateDate" class="col-form-label"></label>
+        </div>
+        <div class="col-md-5">
+            <label class="col-form-label" >@(new DateTime(Model.CreateDate).ToString("dd/MM/yyyyy"))</label>
+        </div>
+    </div>
+    <br />
+
+    <div class="row g-5">
+         <div class="col-md-5 offset-md-1 text-end">
+            <label asp-for="Title" class="col-form-label"></label>
+         </div>
+         <div class="col-md-5">
+            <input asp-for="Title" class="form-control" required>
+         </div>
+    </div>
+    <br />
+
+    <div class="row g-5">
+        <div class="col-md-5 offset-md-1 text-end">
+            <label class="col-form-label">URL</label>
+        </div>
+        <div class="col-md-5">
+            <label class="col-form-label" id="UrlText">@(Url.Action("index","Blog", new {desc = Model.Title }))</label>
+        </div>
+    </div>
+    <br />
+    
+    <div class="row g-5">
+         <div class="col-md-5 offset-md-1 text-end">
+            <label asp-for="Dsc" class="col-form-label"></label>
+         </div>
+         <div class="col-md-5">
+            <input asp-for="Dsc" class="form-control" required>
+         </div>
+    </div>
+    <br />
+
+     <div class="row g-5">         
+         <div class="col-md-10 offset-1">
+            <textarea asp-for="Content" required class="form-control"></textarea>
+         </div>
+    </div>
+    <br />
+
+     <div class="row">
+        <div class="col text-center">
+            <button type="submit" id="submit" value="send" class="btn btn-primary btn-lg" >Enviar</button>
+        </div>
+    </div>
+</form>
+
+<br />
+
+@section Scripts{
+    <script src="https://cdn.tiny.cloud/1/@ViewData["TinymceKey"]/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script src="~/js/neweditblog.js" asp-append-version="true"></script>
+
+    <script type="text/javascript">
+
+        var idTextArea = '#@Html.IdFor(x => x.Content)',
+            idTitle ='@Html.IdFor(x => x.Title)',
+            idurlText = 'UrlText',
+            blogUrl = '@Url.Action("index", "Blog")',
+            LoadImageUrl = '@Url.Action("SaveImage", "BlogManagement")',
+            idImages = '@Html.IdFor(x => x.Images)',
+            idBlog = '@Html.IdFor(x => x.Id)',
+            idCreateDate ='@Html.IdFor(x => x.CreateDate)',
+            idDsc = '@Html.IdFor(x => x.Dsc)',
+            idContent = '@Html.IdFor(x => x.Content)';
+
+        window.onload = function load() {        
+            neweditblog(idurlText,idTitle,blogUrl,idBlog,idCreateDate,idImages,idDsc,idContent);
+
+            tinymce.init({
+                selector: idTextArea,
+                plugins: 'image code',
+                height:600,
+                images_upload_handler: function (blobInfo, success, failure) {
+                    var formData = new FormData();
+
+                    formData.append('FileContent', blobInfo.base64());
+                    formData.append('FileName', blobInfo.filename());
+                    formData.append('Id', document.getElementById('@Html.IdFor(x => x.Id)').value);
+
+                    fetch(LoadImageUrl, {
+                      method: 'POST',
+                      body: formData,
+                      credentials: 'same-origin'
+                    })
+                    .then(response => response.json())
+                    .then(response => {                        
+                        if(response.success) {
+                         success(response.url);
+                         document.getElementById(idImages).value += response.url + '|';
+                         changedImages(document.getElementById(idImages).value);
+                        }
+                        else {
+                            failure("Ocurrio un error");
+                        }
+                    })
+                    .catch(error => failure(error));
+                },
+                init_instance_callback: function (editor) {
+                    editor.on('input', function (e) {
+                        changedContent(e.target.innerHTML);
+                    });
+                }
+            }); 
+        };
+    </script>
+}

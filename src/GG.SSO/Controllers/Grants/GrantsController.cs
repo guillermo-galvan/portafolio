@@ -2,8 +2,8 @@
 using Duende.IdentityServer.Extensions;
 using Duende.IdentityServer.Services;
 using Duende.IdentityServer.Stores;
-using GGPuntoYComa.SSO.Filters;
-using GGPuntoYComa.SSO.Models.Grants;
+using GG.SSO.Filters;
+using GG.SSO.Models.Grants;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.Controllers.Grants
+namespace GG.SSO.Controllers.Grants
 {
     [SecurityHeaders]
     [Authorize]

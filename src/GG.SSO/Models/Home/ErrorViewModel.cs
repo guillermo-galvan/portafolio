@@ -1,6 +1,6 @@
 ﻿using Duende.IdentityServer.Models;
 
-namespace GGPuntoYComa.SSO.Models.Home
+namespace GG.SSO.Models.Home
 {
     public class ErrorViewModel
     {

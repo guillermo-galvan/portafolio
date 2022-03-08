@@ -1,0 +1,32 @@
+﻿@import 'fallbacks/background_color';
+@import 'fallbacks/color';
+
+.btn-primary {
+    @include backgroundcolor(findkey-map-by-value($colors,$color-red),$color-red);
+    @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+    border-color: $color-red;
+    font-family: $aileron;
+
+    &:active:focus {
+        box-shadow: 0 0 0 0.25rem #{$color-red-rgba-05};
+    }
+
+    &:active {
+        @include backgroundcolor(findkey-map-by-value($colors,$color-red),$color-red);
+        border-color: $color-red;
+        @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+    }
+
+    &:focus {
+        @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+        @include backgroundcolor(findkey-map-by-value($colors,$color-red),$color-red);
+        border-color: $color-red;
+        box-shadow: 0 0 0 0.25rem #{$color-red-rgba-05};
+    }
+
+    &:hover {
+        @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+        border-color: $color-red;
+        @include backgroundcolor(findkey-map-by-value($colors,$color-red),$color-red);
+    }
+}

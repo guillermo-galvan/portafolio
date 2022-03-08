@@ -1,4 +1,4 @@
-﻿namespace GGPuntoYComa.SSO.Models.Account
+﻿namespace GG.SSO.Models.Account
 {
     public class RedirectViewModel
     {

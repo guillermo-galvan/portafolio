@@ -1,4 +1,4 @@
-﻿using GGPuntoYComa.SSO.Entity.Table.Sso;
+﻿using GG.SSO.Entity.Table.Sso;
 using System;
 using System.Collections.Generic;
 using System.Data.CRUD;
@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.DataBaseBusiness.Sentences
+namespace GG.SSO.DataBaseBusiness.Sentences
 {
     public class UsersSentences : SentencesBase
     {
         public UsersSentences(ICriteriaBuilder criteriaBuilder) : base(criteriaBuilder)
         { }
 
-        public UsersSentences AddCliteriById(string id,LogicalOperator logicalOperator = LogicalOperator.AND)
+        public UsersSentences AddCliteriById(string id, LogicalOperator logicalOperator = LogicalOperator.AND)
         {
             _criteriaBuilder.AddEqualCriteria(nameof(Users.Id), id, logicalOperator);
 

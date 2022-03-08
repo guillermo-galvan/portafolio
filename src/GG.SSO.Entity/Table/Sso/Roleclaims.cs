@@ -3,7 +3,7 @@ using System.Data.CRUD;
 using System.Security.Claims;
 using MySql.Data.MySqlClient;
 
-namespace GGPuntoYComa.SSO.Entity.Table.Sso
+namespace GG.SSO.Entity.Table.Sso
 {
 	[DataClassCRUD("sso","roleclaims")]
 	public class RoleClaims : Entity<RoleClaims>

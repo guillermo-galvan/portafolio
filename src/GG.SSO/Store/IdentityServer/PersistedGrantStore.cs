@@ -1,13 +1,13 @@
 ﻿using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Stores;
-using GGPuntoYComa.SSO.BusinesLogic.IdentityServer;
+using GG.SSO.BusinesLogic.IdentityServer;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.Store.IdentityServer
+namespace GG.SSO.Store.IdentityServer
 {
     public class PersistedGrantStore : IPersistedGrantStore
     {

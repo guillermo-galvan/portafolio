@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.DataBaseBusiness.Sentences
+namespace GG.SSO.DataBaseBusiness.Sentences
 {
     public abstract class SentencesBase
     {

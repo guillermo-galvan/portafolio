@@ -1,0 +1,19 @@
+﻿@import 'colors';
+@import 'mixin/mediaquery';
+@import 'fallbacks/background_color';
+@import 'fallbacks/color';
+
+.border-dark {
+    border-color: $color-withe !important;
+}
+
+.card {
+    @include backgroundcolor(findkey-map-by-value($colors,$color-background-control),$color-background-control);
+    @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+    font-family: $poppins;
+
+    .text-dark {
+        @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke,!important);
+        font-family: $poppins;
+    }
+}

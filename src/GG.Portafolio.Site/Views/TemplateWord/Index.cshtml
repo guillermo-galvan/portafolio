@@ -1,0 +1,179 @@
+﻿@using GG.Portafolio.Shared.TemplateWord
+@model TemplateRequest
+
+@{
+    ViewData["Title"] = "Template Word";
+}
+
+@section Style{
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
+    </environment>
+
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" />
+    </environment>
+}
+
+<div class="row">
+    <div class="col text-center header">
+        Témplate <span class="color-text-red">Word</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center header-caption">
+        <span class="header-caption">Ejemplo de llenado de un <span class="color-text-red"> Word.</span></span>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-10 offset-md-1 title-project">
+        <span>
+            En este ejemplo se puede llenar de forma dinámica un témplate de Word con los datos que proporciona, el resultado
+            se descargar de forma automática.
+        </span>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="row template">
+    <div class="col-md-5 offset-md-1">
+        <span class="d-block">
+            1. Llene los datos que son solicitados.
+        </span>
+        <span class="d-block">
+            2. Dar clic en generar para que el archivo sea descargado.
+        </span>
+        <span class="d-block">
+            3. Si desea descargar el témplate dar clic en boton de descargar template.
+        </span>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="row template">
+    <div class="col-md-10 offset-md-1 align-content-center text-center">
+        <a href="@Url.Action("GetTemplate","TemplateWord")"  class="btn btn-lg btn-primary">
+            <span>
+                Descargar Template
+            </span>
+        </a>
+    </div>
+</div>
+
+<br />
+<br />
+
+<form asp-action="Index" asp-controller="TemplateWord" asp-antiforgery="true" method="post" class="needs-validation" novalidate>
+    <div class="row g-5">
+         <div class="col-md-5 offset-md-1 text-end">
+            <label asp-for="Name" class="col-form-label"></label>
+         </div>
+         <div class="col-md-4">
+            <input asp-for="Name" class="form-control" required>           
+         </div>
+    </div>
+    <br />
+    <div class="row g-5">
+         <div class="col-md-5 offset-md-1 text-end">
+            <label asp-for="PasswordChangeControl" class="col-form-label"></label>
+         </div>
+         <div class="col-md-4">
+            <input asp-for="PasswordChangeControl" class="form-control">
+         </div>
+    </div>
+    <br />
+    <div class="row g-5">
+         <div class="col-md-5 offset-md-1 text-end">
+            <label asp-for="ColumnName1" class="col-form-label"></label>
+         </div>
+         <div class="col-md-4">
+            <input asp-for="ColumnName1" id="Column1" class="form-control" required>
+         </div>
+    </div>
+    <br />
+    <div class="row g-5">
+         <div class="col-md-5 offset-md-1 text-end">
+            <label asp-for="ColumnName2" class="col-form-label"></label>
+         </div>
+         <div class="col-md-4">
+            <input asp-for="ColumnName2" id="Column2" class="form-control" required>
+         </div>
+    </div>
+    <br />
+    <div class="row g-5">
+         <div class="col-md-5 offset-md-1 text-end">
+            <label asp-for="ColumnName3" class="col-form-label"></label>
+         </div>
+         <div class="col-md-4">
+            <input asp-for="ColumnName3" id="Column3" class="form-control" required>
+         </div>
+    </div>
+    <br />
+    <div class="row g-5">
+        <div class="col-md-5 offset-md-1 align-content-end text-end">
+            <button class="btn btn-primary" type="button" id="btnAdd">
+                <i class="bi bi-plus"></i>
+            </button>
+        </div>
+        <div class="col-md-4 align-content-start">
+            <button class="btn btn-primary" type="button" id="btnDelete">
+                <i class="bi bi-dash"></i>
+            </button>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-3 offset-md-1 text-center">
+            <label id="HeaderColumn1" class="col-form-label">@Model.ColumnName1</label>
+        </div>
+        <div class="col-md-3 text-center">
+            <label id="HeaderColumn2" class="col-form-label">@Model.ColumnName2</label>
+        </div>
+        <div class="col-md-3 text-center">
+            <label id="HeaderColumn3" class="col-form-label">@Model.ColumnName3</label>
+        </div>
+    </div>
+    <br />
+
+    <div id="detailRow">
+        
+            @for (int i = 0; i < Model.DetailRows.Count; i++ )
+            {
+                <div class="row">
+                    <div class="col-md-3 offset-md-1 text-center">
+                        <input asp-for="@Model.DetailRows[i].DetailColumn1" class="form-control" required>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <input asp-for="@Model.DetailRows[i].DetailColumn2" class="form-control" required>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <input asp-for="@Model.DetailRows[i].DetailColumn3" class="form-control" required>
+                    </div>
+                </div>
+                <br />
+            }
+        
+    </div>
+        
+    <div class="row">
+        <div class="col text-center">
+            <button type="submit" id="submit" value="send" class="btn btn-primary btn-lg" >Enviar</button>
+        </div>
+    </div>
+</form>
+
+<br />
+
+@section Scripts{
+    <script src="~/js/templateword.js" asp-append-version="true"></script>
+}
+

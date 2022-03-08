@@ -1,7 +1,7 @@
 ﻿using Duende.IdentityServer.Extensions;
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Services;
-using GGPuntoYComa.SSO.BusinesLogic.Model.Identity;
+using GG.SSO.BusinesLogic.Model.Identity;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.Store.IdentityServer
+namespace GG.SSO.Store.IdentityServer
 {
     public class ProfileService : IProfileService
     {

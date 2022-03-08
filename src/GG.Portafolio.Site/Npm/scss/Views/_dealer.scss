@@ -1,0 +1,93 @@
+﻿@import '../colors';
+@import '../mixin/mediaquery';
+@import '../fallbacks/background_color';
+@import '../fallbacks/color';
+
+.status-active {    
+    @include backgroundcolor(findkey-map-by-value($colors,$color-green),$color-green);
+    padding: 0.5%;
+}
+
+.status-disabled {    
+    @include backgroundcolor(findkey-map-by-value($colors,$color-blue),$color-blue);
+    padding: 0.5%;
+    opacity: 0.5;
+}
+
+.status-selected {
+    @include backgroundcolor(findkey-map-by-value($colors,$color-purple),$color-purple);    
+    padding: 0.5%;
+}
+
+.square-status {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    margin-left: 100px;
+
+    @include media-query-max-550() {
+        margin-left: 0px;
+    }
+}
+
+#divDetail {
+
+    .row {
+        height: 50px;
+        cursor: pointer;
+    }
+
+    .row-select {
+        @include media-query-max-550() {
+            height: 100px;
+        }
+
+        @include media-query-min-551-to-max-767() {
+            height: 130px;
+        }
+    }
+
+    span {
+        font-family: $poppins;
+        @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+    }
+
+    select {
+        font-family: $poppins;
+        @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+        padding: 1.5%;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        background-color: transparent;
+    }
+
+    .form-select:focus {
+        box-shadow: none;
+    }
+
+    .form-select:hover {
+        @include color(findkey-map-by-value($colors,$color-footer),$color-footer);
+        border-color: transparent;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem #{$color-footer-rgba-025};
+    }
+
+    .btn-outline-primary {
+        @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+        border-color: $color-whitesmoke;
+    }
+
+    .btn-outline-primary:focus, .btn-outline-primary:focus, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus {
+        box-shadow: 0 0 0 0.25rem #{$color-footer-rgba-05};
+        @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+        @include backgroundcolor(findkey-map-by-value($colors,$color-footer),$color-footer);
+        border-color: $color-footer;
+    }
+
+    .btn-outline-primary:hover {
+        @include color(findkey-map-by-value($colors,$color-whitesmoke),$color-whitesmoke);
+        @include backgroundcolor(findkey-map-by-value($colors,$color-footer),$color-footer);
+        border-color: $color-footer;
+    }
+}

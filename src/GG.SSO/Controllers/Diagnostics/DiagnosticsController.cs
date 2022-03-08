@@ -1,5 +1,5 @@
-﻿using GGPuntoYComa.SSO.Filters;
-using GGPuntoYComa.SSO.Models.Diagnostics;
+﻿using GG.SSO.Filters;
+using GG.SSO.Models.Diagnostics;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.Controllers.Diagnostics
+namespace GG.SSO.Controllers.Diagnostics
 {
     [SecurityHeaders]
     [Authorize]

@@ -1,6 +1,6 @@
 ﻿using Duende.IdentityServer.Services;
-using GGPuntoYComa.SSO.Filters;
-using GGPuntoYComa.SSO.Models.Home;
+using GG.SSO.Filters;
+using GG.SSO.Models.Home;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.Controllers.Home
+namespace GG.SSO.Controllers.Home
 {
     [SecurityHeaders]
     [AllowAnonymous]

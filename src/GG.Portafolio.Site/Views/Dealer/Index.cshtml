@@ -1,0 +1,81 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Repartidores";
+}
+<input type="hidden" value="@Url.Action("GetData","Dealer")" id="urlData"/>
+
+<div class="row">
+    <div class="col text-center header">
+        Manejo de <span class="color-text-red">repartidores</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center header-caption">
+        <span class="header-caption">Sistema de <span class="color-text-red">repartidores.</span></span>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-10 offset-md-1 title-project">
+        <span>
+            En este ejemplo se muestra un sistema de manejo de repartidores, en el se tiene una lista
+            de 8 motociclistas en un horario de 9:00 am a 8:00 pm en el cual un usuario puede apartar un repartidor
+            dentro del horario.
+        </span>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="row template">
+    <div class="col-md-5 offset-md-1">
+        <span class="d-block">
+            1. Dar clic en la fecha seleccionada.
+        </span>
+        <span class="d-block">
+            2. Selecciona un motociclista.
+        </span>
+        <span class="d-block">
+            3. Una vez que se selecciona el motocilicsta la fecha cambiara de color.
+        </span>
+        <span class="d-block">
+            4. Para liberar al recurso se tiene que volver a dar clic en la fecha
+        </span>
+        <span class="d-block">
+            5. Para cambiar recurso se tiene que seleccionar otro motocilista de la fecha seleccionada
+        </span>
+        <span class="d-block">
+            Estatus:
+        </span>
+        <span class="d-block">
+           <div class="square-status status-active"></div> - Fecha sin asignar motociclista.
+        </span>
+        <span class="d-block">
+           <div class="square-status status-selected"></div> - Fecha asignada a un motociclista.
+        </span>
+        <span class="d-block">
+           <div class="square-status status-disabled"></div> - Fecha fuera de un horario valido.
+        </span>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div id="divDetail">
+    
+</div>
+
+<br />
+<br />
+
+@section Scripts{
+    <script src="~/js/dealer.js" asp-append-version="true"></script>
+}

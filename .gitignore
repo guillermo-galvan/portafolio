@@ -363,8 +363,8 @@ MigrationBackup/
 FodyWeavers.xsd
 
 #Folder Js Site
-/src/GGPuntoYComa.Portfolio.Site/wwwroot/js/
-/src/GGPuntoYComa.Portfolio.Site/wwwroot/css/
-/src/GGPuntoYComa.Portfolio.Site/Npm/TypeScript/**/*.js
-/src/GGPuntoYComa.Portfolio.Site/Npm/TypeScript/**/*.map
-/src/GGPuntoYComa.Portfolio/wwwroot
+/src/GG.Portafolio.Site/wwwroot/js/
+/src/GG.Portafolio.Site/wwwroot/css/
+/src/GG.Portafolio.Site/Npm/TypeScript/**/*.js
+/src/GG.Portafolio.Site/Npm/TypeScript/**/*.map
+/src/GG.Portafolio/wwwroot

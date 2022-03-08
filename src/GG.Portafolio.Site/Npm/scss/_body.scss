@@ -1,0 +1,22 @@
+﻿@import 'colors';
+@import 'fallbacks/background_color';
+@import 'functions';
+@import 'fallbacks/_color.scss';
+
+body {
+    @include backgroundcolor(findkey-map-by-value($colors,$color-page),$color-page);
+    padding-top: 5.0rem;
+}
+
+body.scroll-hidden{
+    overflow:hidden;
+}
+
+.color-text-red {    
+    @include color(findkey-map-by-value($colors,$color-red),$color-red);
+    transition: all .4s ease;
+}
+
+.display-none{
+    display:none;
+}

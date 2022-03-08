@@ -1,5 +1,5 @@
-﻿using GGPuntoYComa.SSO.DataBaseBusiness.Sentences;
-using GGPuntoYComa.SSO.Entity.Table.Sso;
+﻿using GG.SSO.DataBaseBusiness.Sentences;
+using GG.SSO.Entity.Table.Sso;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.DataBaseBusiness.Business
+namespace GG.SSO.DataBaseBusiness.Business
 {
     public class ClientScopesBusiness
     {

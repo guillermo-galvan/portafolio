@@ -1,12 +1,12 @@
 ﻿using Duende.IdentityServer.Models;
-using GGPuntoYComa.SSO.Models.Account;
+using GG.SSO.Models.Account;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.Helpers
+namespace GG.SSO.Helpers
 {
     public static class Extensions
     {

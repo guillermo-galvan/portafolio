@@ -1,5 +1,5 @@
-﻿using GGPuntoYComa.SSO.DataBaseBusiness.Business;
-using GGPuntoYComa.SSO.Entity.Table.Sso;
+﻿using GG.SSO.DataBaseBusiness.Business;
+using GG.SSO.Entity.Table.Sso;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.BusinesLogic.IdentityServer
+namespace GG.SSO.BusinesLogic.IdentityServer
 {
     public class ClientsBasicManagement
     {

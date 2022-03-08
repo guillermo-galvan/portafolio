@@ -1,0 +1,46 @@
+﻿@using GG.Portafolio.Shared.Blog
+@using IdentityModel
+@using System.Security.Claims
+@model BlogComments
+
+@{
+    if (Context.User.Claims.Any())
+    {
+        string name = Context.User?.Claims?.FirstOrDefault(x => x.Type == JwtClaimTypes.Name || x.Type == ClaimTypes.Name)?.Value;
+        Model.Name = name;
+    }
+    else
+    {
+        Model.Name = "Anónimo";
+    }
+}
+
+<form asp-antiforgery="true" asp-action="savecomment" asp-controller="Blog" method="post" class="needs-validation" novalidate>
+    <input type="hidden" asp-for="Date"/>
+    <input type="hidden" asp-for="BlogId">
+
+    <div class="row g-1">
+         <div class="col-md-1 offset-md-1 text-start">
+            <label asp-for="Name" class="col-form-label"></label>
+         </div>
+         <div class="col-md-9">
+            <input asp-for="Name" class="form-control" readonly>
+         </div>
+    </div>
+    <br />
+    <div class="row g-1">
+        <div class="col-md-1 offset-md-1 text-start">
+            <label asp-for="Content" class="col-form-label"></label>
+         </div>
+        <div class="col-md-9">
+            <textarea asp-for="Content" class="form-control" style="height:100px" required>
+            </textarea>
+         </div>
+    </div>
+    <br />
+   <div class="row">
+        <div class="col text-center">
+            <button type="submit" id="submit" value="send" class="btn btn-primary btn-lg" >Enviar</button>
+        </div>
+    </div>
+</form>

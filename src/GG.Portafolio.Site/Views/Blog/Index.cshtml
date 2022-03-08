@@ -1,0 +1,77 @@
+﻿@using GG.Portafolio.Shared.Blog
+@model BlogContentWithCommentsReponse
+
+@{
+    ViewData["Title"] = string.IsNullOrWhiteSpace(Model.Title) ? "Blog" : Model.Title;
+}
+
+@if (string.IsNullOrWhiteSpace(Model.Content))
+{
+    <div class="row">
+        <div class="col text-center header">
+            Er<span class="color-text-red">ror</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col text-center header-caption">
+            <span class="header-caption">Error no se econtro el blog solicitdado.</span>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col text-center header">
+            <span class="color-text-red">@Model.Title</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center header-caption">
+            <span class="header-caption">@(new DateTime(Model.CreateDate < Model.EditDate ? Model.EditDate : Model.CreateDate).ToString("dd/MM/yyyy HH:mm:ss"))</span>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <article class="blogcontent">
+                @Html.Raw(Model.Content)
+            </article>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <partial name="_formComment.cshtml" model="new BlogComments() { Date = DateTime.Now, BlogId = Model.Id}" />
+
+    <br />
+    <br />
+    
+    <div id="divComments">
+        @foreach (var item in Model.Comments.OrderBy(x => x.Date))
+        {
+            <div class="row">
+                <div class="col-md-10 offset-1">
+                    <div class="card border-dark mb-3">
+                      <div class="card-header bg-transparent border-dark">
+                          @(string.IsNullOrWhiteSpace(item.Name) ? "Anónimo" : item.Name ) - @item.Date.ToString("dd/MM/yyyy HH:mm:ss")
+                      </div>
+
+                      <div class="card-body text-dark">
+                        <p class="card-text">@item.Content</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    
+
+    @section Scripts{
+        <script src="~/js/blog.js" asp-append-version="true"></script>
+    }
+}

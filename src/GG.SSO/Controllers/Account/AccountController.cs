@@ -3,10 +3,10 @@ using Duende.IdentityServer.Extensions;
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Services;
 using Duende.IdentityServer.Stores;
-using GGPuntoYComa.SSO.BusinesLogic.Model.Identity;
-using GGPuntoYComa.SSO.Filters;
-using GGPuntoYComa.SSO.Helpers;
-using GGPuntoYComa.SSO.Models.Account;
+using GG.SSO.BusinesLogic.Model.Identity;
+using GG.SSO.Filters;
+using GG.SSO.Helpers;
+using GG.SSO.Models.Account;
 using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -16,7 +16,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.Controllers.Account
+namespace GG.SSO.Controllers.Account
 {
     [SecurityHeaders]
     [AllowAnonymous]

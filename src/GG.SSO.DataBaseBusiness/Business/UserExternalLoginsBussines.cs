@@ -1,19 +1,19 @@
-﻿using GGPuntoYComa.SSO.DataBaseBusiness.Sentences;
-using GGPuntoYComa.SSO.Entity.Table.Sso;
+﻿using GG.SSO.DataBaseBusiness.Sentences;
+using GG.SSO.Entity.Table.Sso;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace GGPuntoYComa.SSO.DataBaseBusiness.Business
+namespace GG.SSO.DataBaseBusiness.Business
 {
     public class UserExternalLoginsBussines
     {
         private readonly UserExternalLoginsSentences _userExternalLoginsSentences;
         private readonly ILogger<UserExternalLoginsBussines> _logger;
 
-        public UserExternalLoginsBussines(UserExternalLoginsSentences userExternalLoginsSentences, 
+        public UserExternalLoginsBussines(UserExternalLoginsSentences userExternalLoginsSentences,
             ILogger<UserExternalLoginsBussines> logger)
         {
             _logger = logger;
@@ -28,8 +28,8 @@ namespace GGPuntoYComa.SSO.DataBaseBusiness.Business
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{methodName} {userExternalLogins}", 
-                    MethodBase.GetCurrentMethod().Name,userExternalLogins);
+                _logger.LogError(ex, "{methodName} {userExternalLogins}",
+                    MethodBase.GetCurrentMethod().Name, userExternalLogins);
                 throw;
             }
         }
@@ -74,7 +74,7 @@ namespace GGPuntoYComa.SSO.DataBaseBusiness.Business
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{methodName} {user_id} {loginProvider} {providerKey}", 
+                _logger.LogError(ex, "{methodName} {user_id} {loginProvider} {providerKey}",
                     MethodBase.GetCurrentMethod().Name, user_id, loginProvider, providerKey);
                 throw;
             }

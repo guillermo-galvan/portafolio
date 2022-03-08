@@ -1,0 +1,17 @@
+﻿@mixin media-query-max-768() {
+    @media only screen and (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin media-query-min-551-to-max-767() {
+    @media (min-width: 551px) and (max-width: 767px)  {
+        @content;
+    }
+}
+
+@mixin media-query-max-550() {
+    @media only screen and (max-width: 550px) {
+        @content;
+    }
+}

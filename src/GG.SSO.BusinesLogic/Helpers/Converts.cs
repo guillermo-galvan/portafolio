@@ -1,5 +1,5 @@
 ﻿using Duende.IdentityServer.Models;
-using GGPuntoYComa.SSO.Entity.Table.Sso;
+using GG.SSO.Entity.Table.Sso;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.BusinesLogic.Helpers
+namespace GG.SSO.BusinesLogic.Helpers
 {
 	public static class Converts
     {

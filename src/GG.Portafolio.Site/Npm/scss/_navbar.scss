@@ -1,0 +1,84 @@
+﻿@import 'colors';
+@import 'fallbacks/background_color';
+@import 'functions';
+@import 'mixin/mediaquery';
+
+@mixin navbar-dark($opacity) {
+    color: $color-withe;
+    opacity: $opacity;
+}
+
+@mixin navbar-dark-media($opacity, $disabled: false,$textanlig: false) {
+    @if not $disabled {
+        opacity: $opacity;
+
+        @if $textanlig {
+            text-align: center;
+        }
+    }
+}
+
+.navbar-dark {
+    @include backgroundcolor(findkey-map-by-value($colors,$color-page),$color-page);
+}
+
+.navbar-dark {
+    .navbar-brand {
+        height: 2.5em;
+        transition: all .4s ease;
+        opacity: 0.8;
+
+        &:hover,
+        &:focus {
+            opacity: 1;
+            transform: rotate(45deg);
+        }
+    }
+
+    .navbar-nav {
+        .nav-link {
+            @include navbar-dark(0.7);
+            font-family: $poppins;
+
+            @include media-query-max-768() {
+                @include navbar-dark-media(1,false, true);
+            }
+
+            &:hover,
+            &:focus {
+                @include navbar-dark(1);
+            }
+
+            &.disabled {
+                @include navbar-dark(0.3);
+            }
+        }
+
+        .show > .nav-link,
+        .nav-link.active {
+            @include navbar-dark(1);
+        }
+    }
+
+    .navbar-toggler {
+        @include navbar-dark(1);
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='#{$color-withe-rgba}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .navbar-text {
+        @include navbar-dark(0.7);
+
+        @include media-query-max-768() {
+            @include navbar-dark-media(1);
+        }
+
+        a,
+        a:hover,
+        a:focus {
+            @include navbar-dark(1);
+        }
+    }
+}

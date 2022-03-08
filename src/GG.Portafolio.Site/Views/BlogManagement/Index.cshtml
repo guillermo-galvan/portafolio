@@ -1,0 +1,98 @@
+﻿@using GG.Portafolio.Shared.Blog
+@model List<BlogResponse>;
+
+@{
+    ViewData["Title"] = "Blog Management";
+}
+
+@section Style{
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
+    </environment>
+
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" />
+    </environment>
+}
+
+<div class="row">
+    <div class="col text-center header">
+        Administración del <span class="color-text-red">- Blog</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center header-caption">
+        <span class="header-caption">Blo <span class="color-text-red">gs.</span></span>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-5 offset-md-1 align-content-end text-end">
+        <a href="@Url.Action("NewEdit","BlogManagement", new { blog = string.Empty })" class="btn btn-primary" >
+            <i class="bi bi-plus"></i>
+        </a>
+    </div>
+</div>
+<br />
+
+<div class="row blog-management">
+    <div class="col-md-2 offset-md-1 blog-description">
+        
+    </div>
+    <div class="col-md-2 blog-description">
+        <span class="align-middle">
+           Titulo
+        </span>
+    </div>
+    <div class="col-md-2 blog-description">
+        <span class="align-middle">
+            Descripción
+        </span>
+    </div>
+    <div class="col-md-2 blog-description">
+        <span class="align-middle">
+            Url
+        </span>
+    </div>
+</div>
+
+@foreach(var item in Model)
+{
+    <br />
+    <div class="row blog-management">
+        <div class="col-md-2 offset-md-1 blog-description">
+            <a href="@Url.Action("NewEdit", "BlogManagement", new { blog = item.Id })" class="link-primary">Editar</a>
+            <a href="@Url.Action("Delete", "BlogManagement", new { blog = item.Id })" class="link-primary">Eliminar</a>
+        </div>
+        <div class="col-md-2 blog-description">
+            <span class="align-middle">
+               @item.Title
+            </span>
+        </div>
+        <div class="col-md-2 blog-description">
+            <span class="align-middle">
+                @item.Dsc
+            </span>
+        </div>
+        <div class="col-md-2 blog-description">
+            <span class="align-middle">
+                <a href="@Url.Action("Index", "Blog", new { @item.Title })">
+                    @Html.Raw(Url.Action("Index", "Blog", new { @item.Title }))
+                </a>
+            </span>
+        </div>
+    </div>
+}
+
+@if (ViewBag.DeleteBlogBackup != null && ViewBag.DeleteBlogBackup)
+{
+    @section Scripts{
+        <script type="text/javascript">
+            localStorage.removeItem("blog");
+        </script>
+    }
+}

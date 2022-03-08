@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GGPuntoYComa.SSO.Models.Grants
+namespace GG.SSO.Models.Grants
 {
     public class GrantsViewModel
     {

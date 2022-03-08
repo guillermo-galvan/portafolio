@@ -1,0 +1,56 @@
+﻿@using GG.Portafolio.Shared.Blog
+@using GG.Portafolio.Site.Models
+@model DefaultViews
+
+@{
+    ViewData["Title"] = "Guillermo Galván";
+}
+
+<div id="home" class="display-none">
+    @if (Model == DefaultViews.Home)
+    {
+        <partial name="Home.cshtml" />
+    }
+</div>
+
+<div id="aboutme" class="display-none">
+    @if (Model == DefaultViews.AboutMe)
+    {
+        <partial name="AboutMe.cshtml" />
+    }
+</div>
+
+<div id="blog" class="display-none">
+    @if (Model == DefaultViews.Blog)
+    {
+        <partial name="Blogs.cshtml" model="ViewBag.Blogs ?? new List<List<BlogResponse>>()" />
+    }
+</div>
+
+<div id="portfolio" class="display-none">
+    @if (Model == DefaultViews.Portfolio)
+    {
+        <partial name="Portfolio.cshtml" />
+    }
+</div>
+
+<div class="display-none">
+    <input type="hidden" value="@Url.Action("Home","Home")" id="linkHome" />
+    <input type="hidden" value="@Url.Action("AboutMe","Home")" id="linkAboutMe" />
+    <input type="hidden" value="@Url.Action("Portfolio","Home")" id="linkPortfolio" />
+    <input type="hidden" value="@Url.Action("Blogs","Home")" id="linkBlog" />
+
+    <input type="hidden" value="@((int)Model)" id="loadedView" />
+</div>
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>
+    </environment>
+
+    <environment exclude="Development">
+        <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    </environment>
+
+    <script src="~/js/home.js" asp-append-version="true"></script>
+}

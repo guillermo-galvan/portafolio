@@ -1,0 +1,22 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+@import 'fonts';
+@import 'colors';
+@import 'root';
+@import 'animation';
+@import 'body';
+@import 'footer';
+@import 'navbar';
+@import 'buttons';
+@import 'label';
+@import 'formcontrol';
+@import 'main';
+@import 'card';
+@import 'Views/home';
+@import 'Views/aboutMe';
+@import 'Views/portfolio';
+@import 'Views/blog';
+@import 'Views/templateWord';
+@import 'Views/dealer';
+@import 'Views/_blogManagement.scss';
