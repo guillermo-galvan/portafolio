@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.Security.Claims;
 using GG.SSO.DataBaseBusiness.Business;
-using GG.SSO.DataBaseBusiness.Business;
 
 namespace GG.SSO.BusinesLogic.Identity
 {
