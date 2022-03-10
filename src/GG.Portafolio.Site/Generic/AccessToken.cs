@@ -71,7 +71,6 @@ namespace GG.Portafolio.Site.Generic
             catch (Exception ex)
             {
                 logger?.LogError(ex, "Method {name}", MethodBase.GetCurrentMethod().Name);
-                throw;
             }
         }
     }
