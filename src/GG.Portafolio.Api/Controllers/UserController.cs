@@ -19,7 +19,7 @@ namespace GG.Portafolio.Api.Controllers
         private readonly UserManagement _userManagement;
 
         public UserController(ILogger<UserController> logger, UserManagement userManagement)
-        {
+        { 
             _logger = logger;
             _userManagement = userManagement;
         }
@@ -33,7 +33,7 @@ namespace GG.Portafolio.Api.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    return new UserResponse() { Success = _userManagement.Validate(user) };
+                    return new UserResponse() { Success = _userManagement.Validate(user)};
                 }
                 else
                 {

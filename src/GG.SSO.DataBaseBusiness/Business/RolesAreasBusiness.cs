@@ -1,4 +1,5 @@
-﻿using GG.SSO.Entity.Table.Sso;
+﻿using GG.SSO.DataBaseBusiness.Sentences;
+using GG.SSO.Entity.Table.Sso;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
-using GG.SSO.DataBaseBusiness.Sentences;
 
 namespace GG.SSO.DataBaseBusiness.Business
 {
@@ -21,7 +21,7 @@ namespace GG.SSO.DataBaseBusiness.Business
             _logger = logger;
         }
 
-        public void Insert(Areas areas, Roles roles)
+        public void Insert(Areas areas,Roles roles)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace GG.SSO.DataBaseBusiness.Business
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{Name} {areas} {roles}", MethodBase.GetCurrentMethod().Name, areas, roles);
+                _logger.LogError(ex, "{Name} {areas} {roles}",MethodBase.GetCurrentMethod().Name, areas, roles);
                 throw;
             }
         }
@@ -42,7 +42,7 @@ namespace GG.SSO.DataBaseBusiness.Business
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{Name} {areas} {roles}", MethodBase.GetCurrentMethod().Name, areas, roles);
+                _logger.LogError(ex, "{Name} {areas} {roles}",MethodBase.GetCurrentMethod().Name, areas, roles);
                 throw;
             }
         }
@@ -56,7 +56,7 @@ namespace GG.SSO.DataBaseBusiness.Business
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{Name} {roleId}", MethodBase.GetCurrentMethod().Name, roleId);
+                _logger.LogError(ex, "{Name} {roleId}",MethodBase.GetCurrentMethod().Name, roleId);
                 throw;
             }
         }

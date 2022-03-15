@@ -17,7 +17,7 @@ namespace GG.Portafolio.Site.Controllers
         private readonly IHttpClient _httpClient;
 
         public TemplateWordController(ILogger<TemplateWordController> logger, IHttpClient httpClient)
-        {
+        { 
             _logger = logger;
             _httpClient = httpClient;
         }
@@ -37,9 +37,9 @@ namespace GG.Portafolio.Site.Controllers
                 if (ModelState.IsValid)
                 {
                     (TemplateResponse Ok, ErrorApi Error, HttpStatusCode StatusCode) response =
-                        await _httpClient.PostAsync<TemplateResponse, ErrorApi>("TemplateWord/generatetemplate", model, _logger);
+                        await _httpClient.PostAsync< TemplateResponse, ErrorApi> ("TemplateWord/generatetemplate", model, _logger);
 
-                    if (response.StatusCode == HttpStatusCode.OK)
+                    if (response.StatusCode == HttpStatusCode.OK) 
                     {
                         return File(response.Ok.File, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", $"{model.Name}.{response.Ok.Extension}");
                     }
@@ -53,7 +53,7 @@ namespace GG.Portafolio.Site.Controllers
             return View(model);
         }
 
-        [HttpGet]
+        [HttpGet]        
         public async Task<IActionResult> GetTemplate()
         {
             try
@@ -70,7 +70,7 @@ namespace GG.Portafolio.Site.Controllers
                 _logger.LogError(ex, "{Name}", MethodBase.GetCurrentMethod().Name);
             }
 
-            return Problem("Error", statusCode: (int)HttpStatusCode.NotFound);
+            return Problem("Error",statusCode: (int)HttpStatusCode.NotFound);
         }
     }
 }

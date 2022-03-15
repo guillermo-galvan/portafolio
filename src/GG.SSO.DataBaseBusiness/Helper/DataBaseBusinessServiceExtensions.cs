@@ -1,6 +1,6 @@
-﻿using GG.SSO.DataBaseBusiness.Business;
+﻿using GG.SSO.DataBaseBusiness;
+using GG.SSO.DataBaseBusiness.Business;
 using GG.SSO.DataBaseBusiness.Sentences;
-using GG.SSO.DataBaseBusiness;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -62,6 +62,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<ApiResourceSecretsBusiness>();
             services.AddScoped<ApiResourceClaimsBusiness>();
             services.AddScoped<ApiResourcePropertiesBusiness>();
+            services.AddScoped<KeysBusiness>();
 
             //Sentences
             services.AddScoped<PersistedGrantsSentences>();
@@ -106,6 +107,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<CompanyUsersSentences>();
             services.AddScoped<IdentityResourcesPropertiesSentences>();
             services.AddScoped<IdentityResourceClaimsSentences>();
+            services.AddScoped<KeysSentences>();
 
             return services;
         }

@@ -14,7 +14,7 @@ namespace GG.Portafolio.DataBaseBusiness.Test.Sentences
         [Fact]
         public void BlogCommentsSentences_AddCliteriById_NotEmpty()
         {
-            BlogCommentsSentences sentences = new(new CriteriaBuilder());
+            BlogCommentsSentences sentences = new (new CriteriaBuilder());
 
             sentences.AddCliteriById(1, LogicalOperator.AND);
 

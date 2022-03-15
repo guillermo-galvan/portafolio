@@ -31,15 +31,15 @@ namespace GG.Portafolio.Site.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult> GetData([FromQuery] DateTime date)
+        public async Task<JsonResult> GetData([FromQuery]DateTime date)
         {
             try
             {
-                var dateparse = HttpUtility.ParseQueryString(date.ToString("MM/dd/yyyy HH:mm:ss"));
+                var dateparse = HttpUtility.ParseQueryString(date.ToString("MM/dd/yyyy HH:mm:ss"));                
                 var timeHttp = _httpClient.GetAsync<TimeList, ErrorApi>($"Dealer/gettimelist?date={dateparse}", _logger);
                 var dealerHttp = _httpClient.GetAsync<List<DeliveryMan>, ErrorApi>("Dealer/deliveryman", _logger);
 
-                (TimeList Ok, ErrorApi Error, HttpStatusCode StatusCode) timeList = await timeHttp;
+                (TimeList Ok, ErrorApi Error, HttpStatusCode StatusCode) timeList =  await timeHttp;
                 (List<DeliveryMan> Ok, ErrorApi Error, HttpStatusCode StatusCode) deliveryMans = await dealerHttp;
 
                 if (timeList.StatusCode == HttpStatusCode.OK && deliveryMans.StatusCode == HttpStatusCode.OK)

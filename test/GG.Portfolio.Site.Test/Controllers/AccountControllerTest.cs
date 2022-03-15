@@ -1,5 +1,4 @@
-﻿using GG.Portafolio.Site.Test;
-using GG.Portafolio.Site.Controllers;
+﻿using GG.Portafolio.Site.Controllers;
 using GG.Portafolio.Site.Generic.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +14,7 @@ namespace GG.Portafolio.Site.Test.Controllers
         private readonly Mock<IAccessToken> _mockIAccessToken;
         private readonly Mock<IHttpClientFactory> _mockIHttpClientFactory;
         public AccountControllerTest()
-        {
+        { 
             _mockIAccessToken = MockIAccessToken.GetMockIAccessToken();
             _mockIHttpClientFactory = MockIHttpClientFactory.GetHttpClientFactory(_mockIAccessToken.Object.DiscoveryDocumentResponse.UserInfoEndpoint);
             _controller = new(_mockIAccessToken.Object, _mockIHttpClientFactory.Object)
@@ -39,22 +38,21 @@ namespace GG.Portafolio.Site.Test.Controllers
 
         [Fact]
         public async void AccountController_Index_IsType_ViewResult()
-        {
-            _controller.ControllerContext.HttpContext = new DefaultHttpContext
-            {
+        {   
+            _controller.ControllerContext.HttpContext = new DefaultHttpContext {
                 User = Utilities.GetClaimsPrincipal(),
                 RequestServices = Utilities.GetServiceProvider(),
             };
 
             var result = await _controller.Index();
-            _controller.ControllerContext.HttpContext = null;
+            _controller.ControllerContext.HttpContext = null;            
             Assert.IsType<ViewResult>(result);
         }
 
         [Fact]
         public void AccountController_Logout_IsType_SignInResult()
         {
-            var result = _controller.Logout();
+            var result = _controller.Logout();            
             Assert.IsType<SignOutResult>(result);
         }
     }

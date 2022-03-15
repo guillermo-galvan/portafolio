@@ -11,7 +11,7 @@ namespace GG.SSO.DataBaseBusiness.Sentences
     public class PersistedGrantsSentences : SentencesBase
     {
         public PersistedGrantsSentences(ICriteriaBuilder criteriaBuilder) : base(criteriaBuilder)
-        { }
+        {}
 
         public PersistedGrantsSentences AddCliteriByKey(string key, LogicalOperator logicalOperator = LogicalOperator.AND)
         {
@@ -43,7 +43,7 @@ namespace GG.SSO.DataBaseBusiness.Sentences
 
         public PersistedGrantsSentences AddCliteriByClienteId(string clientId, LogicalOperator logicalOperator = LogicalOperator.AND)
         {
-            _criteriaBuilder.AddEqualCriteria(nameof(PersistedGrants.ClientId), clientId, logicalOperator);
+             _criteriaBuilder.AddEqualCriteria(nameof(PersistedGrants.ClientId), clientId, logicalOperator);
 
             return this;
         }

@@ -66,13 +66,13 @@ namespace GG.Portafolio.Site.Test
         {
             Mock<IHttpClientFactory> mock = new();
             NetworkHandler handler = null;
-            string path = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Documents");
+            string path = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Documents");            
 
-            mock.Setup(m => m.CreateClient(It.IsAny<string>())).Returns<string>((m) =>
-            {
+            mock.Setup(m => m.CreateClient(It.IsAny<string>())).Returns<string>((m) => 
+            {   
                 if (m == nameof(ConfigurationValues.BackEndURL))
                 {
-
+                    
                 }
                 else if (m == nameof(ConfigurationValues.SsoUrl))
                 {
@@ -95,61 +95,59 @@ namespace GG.Portafolio.Site.Test
 
         public static Mock<IHttpClient> GetMockHttpClient()
         {
-            lock (_objectLock)
+            lock(_objectLock)
             {
                 if (_mockIHttpClient == null)
                 {
                     _mockIHttpClient = new();
                 }
             }
-
+            
             return _mockIHttpClient;
         }
 
         public static void SetBlogContentWithCommentsReponse()
         {
-            _mockIHttpClient.Setup(m => m.GetAsync<BlogContentWithCommentsReponse, ErrorApi>(It.IsAny<string>(), It.IsAny<ILogger>()))
-                            .Returns<string, ILogger>((url, logger) =>
-                            {
-                                BlogContentWithCommentsReponse reponse = null;
-                                ErrorApi error = null;
-                                HttpStatusCode httpStatusCode = HttpStatusCode.OK;
+            _mockIHttpClient.Setup(m => m.GetAsync<BlogContentWithCommentsReponse, ErrorApi>(It.IsAny<string>(),It.IsAny<ILogger>()))
+                            .Returns<string, ILogger>((url,logger) => {
+                                           BlogContentWithCommentsReponse reponse = null;
+                                           ErrorApi error = null;
+                                           HttpStatusCode httpStatusCode = HttpStatusCode.OK;
 
-                                var splitUrl = GetSplitUrl(url);
+                                           var splitUrl = GetSplitUrl(url);
 
-                                if (url.Contains("Blog/getbytitle/"))
-                                {
-                                    if (splitUrl.Length < 3 || string.IsNullOrEmpty(splitUrl[2]))
-                                    {
-                                        error = new ErrorApi
-                                        {
-                                            Status = (int)HttpStatusCode.BadRequest,
-                                        };
+                                           if (url.Contains("Blog/getbytitle/"))
+                                           {
+                                               if ( splitUrl.Length < 3 || string.IsNullOrEmpty(splitUrl[2]))
+                                               {
+                                                   error = new ErrorApi 
+                                                   {
+                                                       Status = (int)HttpStatusCode.BadRequest,
+                                                   };
 
-                                        httpStatusCode = HttpStatusCode.BadRequest;
-                                    }
-                                    else
-                                    {
-                                        reponse = new BlogContentWithCommentsReponse
-                                        {
-                                            Comments = new List<BlogComments>(),
-                                            Content = "Content",
-                                            Title = splitUrl[2],
-                                            CreateDate = DateTime.Now.Ticks,
-                                            Dsc = "Dsc",
-                                            EditDate = DateTime.Now.Ticks,
-                                            Id = Guid.NewGuid().ToString(),
-                                        };
-                                    }
-                                }
+                                                   httpStatusCode = HttpStatusCode.BadRequest;
+                                               }
+                                               else
+                                               {
+                                                   reponse = new BlogContentWithCommentsReponse 
+                                                   {
+                                                       Comments = new List<BlogComments>(),
+                                                       Content = "Content",
+                                                       Title = splitUrl[2],
+                                                       CreateDate = DateTime.Now.Ticks,
+                                                       Dsc = "Dsc",
+                                                       EditDate = DateTime.Now.Ticks,
+                                                       Id = Guid.NewGuid().ToString(),
+                                                   };
+                                               }
+                                           }
+                                           
 
-
-                                return Task.FromResult((reponse, error, httpStatusCode));
-                            });
+                                           return Task.FromResult((reponse, error, httpStatusCode));
+                                       });
 
             _mockIHttpClient.Setup(m => m.PostAsync<string, ErrorApi>(It.IsAny<string>(), It.IsAny<BlogComments>(), It.IsAny<ILogger>()))
-                            .Returns<string, object, ILogger>((url, data, logger) =>
-                            {
+                            .Returns<string, object, ILogger > ((url, data, logger) => {
                                 return Task.FromResult((string.Empty, (ErrorApi)null, HttpStatusCode.OK));
                             });
         }
@@ -157,12 +155,11 @@ namespace GG.Portafolio.Site.Test
         public static void SetTimeList()
         {
             _mockIHttpClient.Setup(m => m.GetAsync<TimeList, ErrorApi>(It.IsAny<string>(), It.IsAny<ILogger>()))
-                            .Returns<string, ILogger>((url, logger) =>
-                            {
+                            .Returns<string, ILogger>((url, logger) => {
 
-                                List<TimeCalculated> list = new()
+                                List<TimeCalculated> list = new() 
                                 {
-                                    new TimeCalculated(1, DateTime.Now, 1, 1),
+                                    new TimeCalculated(1,DateTime.Now, 1,1),
                                     new TimeCalculated(2, DateTime.Now, 2, 2),
                                     new TimeCalculated(3, DateTime.Now, 3, 3),
                                 };
@@ -174,8 +171,7 @@ namespace GG.Portafolio.Site.Test
         public static void SetDeliveryMan()
         {
             _mockIHttpClient.Setup(m => m.GetAsync<List<DeliveryMan>, ErrorApi>(It.IsAny<string>(), It.IsAny<ILogger>()))
-                            .Returns<string, ILogger>((url, logger) =>
-                            {
+                            .Returns<string, ILogger>((url, logger) => {
 
                                 List<DeliveryMan> list = new()
                                 {
@@ -191,8 +187,7 @@ namespace GG.Portafolio.Site.Test
         public static void SetIEnumerableBlogResponse()
         {
             _mockIHttpClient.Setup(m => m.GetAsync<IEnumerable<BlogResponse>, ErrorApi>(It.IsAny<string>(), It.IsAny<ILogger>()))
-                            .Returns<string, ILogger>((url, logger) =>
-                            {
+                            .Returns<string, ILogger>((url, logger) => {
 
                                 List<BlogResponse> list = new()
                                 {
@@ -209,22 +204,20 @@ namespace GG.Portafolio.Site.Test
 
         public static void SetTemplateResponse()
         {
-            _mockIHttpClient.Setup(m => m.PostAsync<TemplateResponse, ErrorApi>(It.IsAny<string>(), It.IsAny<TemplateRequest>(), It.IsAny<ILogger>()))
-                            .Returns<string, TemplateRequest, ILogger>((url, model, logger) =>
-                            {
+            _mockIHttpClient.Setup(m => m.PostAsync<TemplateResponse, ErrorApi>(It.IsAny<string>(),It.IsAny<TemplateRequest>(), It.IsAny<ILogger>()))
+                            .Returns<string, TemplateRequest, ILogger>((url, model,logger) => {
 
                                 string path = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Documents");
 
-                                return Task.FromResult((new TemplateResponse()
-                                {
-                                    Extension = ".txt",
-                                    File = File.ReadAllBytes(Path.Combine(path, "success_userinfo_response.json"))
+                                return Task.FromResult((new TemplateResponse() 
+                                { 
+                                    Extension = ".txt", 
+                                    File = File.ReadAllBytes(Path.Combine(path, "success_userinfo_response.json")) 
                                 }, (ErrorApi)null, HttpStatusCode.OK));
                             });
 
             _mockIHttpClient.Setup(m => m.GetAsync<TemplateResponse, ErrorApi>(It.IsAny<string>(), It.IsAny<ILogger>()))
-                            .Returns<string, ILogger>((url, logger) =>
-                            {
+                            .Returns<string, ILogger>((url, logger) => {
 
                                 string path = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Documents");
 
@@ -241,7 +234,7 @@ namespace GG.Portafolio.Site.Test
             lock (_objectLock)
             {
                 if (_mockIHttpClientWithToken == null)
-                {
+                { 
                     _mockIHttpClientWithToken = new Mock<IHttpClientWithToken>();
                 }
             }
@@ -252,14 +245,12 @@ namespace GG.Portafolio.Site.Test
         public static void SetBlogResponse()
         {
             _mockIHttpClientWithToken.Setup(m => m.GetAsync<IEnumerable<BlogResponse>, ErrorApi>(It.IsAny<string>(), It.IsAny<HttpContext>(), It.IsAny<ILogger>())).
-                Returns<string, HttpContext, ILogger>((url, httpContext, logger) =>
-                {
+                Returns<string, HttpContext, ILogger>((url, httpContext, logger) => {
                     List<BlogResponse> result = new();
                     HttpStatusCode httpStatusCode = HttpStatusCode.BadRequest;
                     if (httpContext != null)
                     {
-                        result.Add(new BlogResponse
-                        {
+                        result.Add(new BlogResponse {
                             CreateDate = DateTime.Now.Ticks,
                             Dsc = "Dsc",
                             Id = Guid.NewGuid().ToString(),
@@ -282,7 +273,7 @@ namespace GG.Portafolio.Site.Test
         public static void SetBlogManagementModel()
         {
             _mockIHttpClientWithToken.Setup(m => m.GetAsync<BlogManagementModel, ErrorApi>(It.IsAny<string>(), It.IsAny<HttpContext>(), It.IsAny<ILogger>()))
-                                    .Returns<string, HttpContext, ILogger>((url, httpContext, logger) =>
+                                    .Returns<string, HttpContext, ILogger>((url, httpContext, logger) => 
                                     {
                                         (BlogManagementModel result, ErrorApi error, HttpStatusCode httpStatusCode) = GetBlogContent(url, httpContext, logger);
 
@@ -304,9 +295,9 @@ namespace GG.Portafolio.Site.Test
         public static void SetBlogOperationResponse()
         {
             _mockIHttpClientWithToken.Setup(m => m.PostAsync<BlogOperationResponse, ErrorApi>(It.IsAny<string>(), It.IsAny<object>(), It.IsAny<HttpContext>(), It.IsAny<ILogger>()))
-                .Returns<string, object, HttpContext, ILogger>((url, peticion, httpContext, logger) =>
+                .Returns<string, object, HttpContext, ILogger>((url, peticion, httpContext, logger) => 
                 {
-                    return Task.FromResult((new BlogOperationResponse
+                    return Task.FromResult((new BlogOperationResponse 
                     {
                         Errores = new List<string>()
                     }, (ErrorApi)null, HttpStatusCode.OK));

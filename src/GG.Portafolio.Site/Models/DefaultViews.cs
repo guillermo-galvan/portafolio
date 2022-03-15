@@ -3,8 +3,8 @@
     public enum DefaultViews
     {
         Home = 0,
-        AboutMe = 1,
-        Blog = 2,
-        Portfolio = 3
+        AboutMe =1,
+        Blog =2,
+        Portfolio=3
     }
 }

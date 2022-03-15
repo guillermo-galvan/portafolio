@@ -10,7 +10,7 @@ var sourcemaps = require('gulp-sourcemaps');
 const webpackstream = require('webpack-stream');
 const path = require('path');
 const webpack = require('webpack');
-process.env.NODE_ENV = process.env.NODE_ENV || "development";//"production";
+process.env.NODE_ENV = process.env.NODE_ENV || "production";//"development";
 
 var paths = {
     scripts: [

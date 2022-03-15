@@ -17,7 +17,7 @@ namespace GG.Portafolio.Api.Test.Controllers
     {
         private readonly ILogger<DealerController> _logger;
         private readonly DealerController _controller;
-
+        
         public DealerControllerTest()
         {
             ServiceProvider serviceProvider = new ServiceCollection().AddLogging().BuildServiceProvider();
@@ -31,7 +31,7 @@ namespace GG.Portafolio.Api.Test.Controllers
         public void DealerController_NotNull()
         {
             ServiceProvider serviceProvider = new ServiceCollection().AddLogging().BuildServiceProvider();
-            var factory = serviceProvider.GetService<ILoggerFactory>();
+            var factory = serviceProvider.GetService<ILoggerFactory>();            
 
             Assert.NotNull(new DealerController(_logger, new DealerManagement(factory.CreateLogger<DealerManagement>())));
         }

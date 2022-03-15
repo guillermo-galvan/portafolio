@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Logging;
 using System;
 using System.Globalization;
 using System.Net.Http;
@@ -32,9 +33,10 @@ namespace GG.Portafolio.Site
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            IdentityModelEventSource.ShowPII = true;
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-MX");
 
-            IConfigurationSection configurationSection = Configuration.GetSection(nameof(ConfigurationValues));
+            IConfigurationSection configurationSection = Configuration.GetSection(nameof(ConfigurationValues));            
             ConfigurationValues configurationValues = configurationSection.Get<ConfigurationValues>();
             services.Configure<ConfigurationValues>(configurationSection);
             services.Configure<OAuthConfiguration>(Configuration.GetSection(nameof(OAuthConfiguration)));
@@ -47,8 +49,7 @@ namespace GG.Portafolio.Site
             {
                 client.BaseAddress = new Uri(configurationValues.BackEndURL);
 
-            }).ConfigurePrimaryHttpMessageHandler(() =>
-            {
+            }).ConfigurePrimaryHttpMessageHandler(() => {
                 return new HttpClientHandler()
                 {
                     ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true
@@ -57,11 +58,11 @@ namespace GG.Portafolio.Site
             services.AddHttpClient(nameof(ConfigurationValues.SsoUrl), client =>
             {
                 client.BaseAddress = new Uri(configurationValues.SsoUrl);
-            }).ConfigurePrimaryHttpMessageHandler(() =>
+            }).ConfigurePrimaryHttpMessageHandler(() => 
             {
-                return new HttpClientHandler()
+                return new HttpClientHandler() 
                 {
-                    ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true
+                    ServerCertificateCustomValidationCallback = (o,cert, chain, errors) => true
                 };
             });
 
@@ -103,12 +104,16 @@ namespace GG.Portafolio.Site
                {
                    options.Scope.Add(item);
                }
-
+               
                options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                {
                    RoleClaimType = "user_role",
                };
                options.EventsType = typeof(CustomOpenIdConnectEvents);
+               options.BackchannelHttpHandler = new HttpClientHandler()
+               {
+                   ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true
+               };
            });
 
             services.AddAuthorization(options =>
@@ -130,8 +135,7 @@ namespace GG.Portafolio.Site
                 });
             });
 
-            services.Configure<CookiePolicyOptions>(options =>
-            {
+            services.Configure<CookiePolicyOptions>(options => {
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.Strict;
             });

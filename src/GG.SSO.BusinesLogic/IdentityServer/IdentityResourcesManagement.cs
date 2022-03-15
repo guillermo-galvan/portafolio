@@ -1,7 +1,7 @@
 ﻿using Duende.IdentityServer.Models;
+using GG.SSO.BusinesLogic.Helpers;
 using GG.SSO.DataBaseBusiness;
 using GG.SSO.DataBaseBusiness.Business;
-using GG.SSO.BusinesLogic.Helpers;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using System;

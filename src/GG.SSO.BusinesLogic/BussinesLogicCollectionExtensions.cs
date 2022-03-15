@@ -1,7 +1,7 @@
-﻿using GG.SSO.DataBaseBusiness;
-using GG.SSO.BusinesLogic.Identity;
+﻿using GG.SSO.BusinesLogic.Identity;
 using GG.SSO.BusinesLogic.IdentityServer;
 using GG.SSO.BusinesLogic.Model.Identity;
+using GG.SSO.DataBaseBusiness;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -40,6 +40,7 @@ namespace GG.SSO.BusinesLogic
             services.AddScoped<ApiResourcesManagement>();
             services.AddScoped<ClientsBasicManagement>();
             services.AddScoped<UserManagement>();
+            services.AddScoped<KeysManagement>();
 
             //Identity
             services.AddTransient<IUserStore<ApplicationUser>, UserStore>();

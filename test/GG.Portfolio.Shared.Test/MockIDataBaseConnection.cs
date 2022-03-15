@@ -7,6 +7,8 @@ using System.Data;
 using System.Data.CRUD;
 using System.Data.CRUD.MySql;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace GG.Portafolio.Shared.Test
 {
@@ -66,7 +68,7 @@ namespace GG.Portafolio.Shared.Test
                     return new List<TEntity>();
                 }
             }
-
+            
             return null;
         }
 

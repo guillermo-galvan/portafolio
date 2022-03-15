@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using GG.Portafolio.Site.Generic.Interfaces;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -6,7 +7,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication;
-using GG.Portafolio.Site.Generic.Interfaces;
 
 namespace GG.Portafolio.Site.Generic.Rest
 {
@@ -14,7 +14,7 @@ namespace GG.Portafolio.Site.Generic.Rest
     {
         public HttpClientRestWithToken(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-
+            
         }
 
         public async Task<(TResultOk, TResultError, HttpStatusCode)> GetAsync<TResultOk, TResultError>(string urlRelative, HttpContext httpContext, ILogger logger)

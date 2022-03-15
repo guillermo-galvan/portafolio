@@ -18,7 +18,7 @@ namespace GG.Portafolio.Site.Generic.Events
         private readonly ILogger<CustomOpenIdConnectEvents> _logger;
 
         public CustomOpenIdConnectEvents(IHttpClient httpClient, ILogger<CustomOpenIdConnectEvents> logger)
-        {
+        { 
             _httpClient = httpClient;
             _logger = logger;
         }
@@ -60,8 +60,8 @@ namespace GG.Portafolio.Site.Generic.Events
             userRequest.Subject = context.User.RootElement.GetString(JwtClaimTypes.Subject) ?? context.User.RootElement.GetString(ClaimTypes.NameIdentifier);
             userRequest.Email = context.User.RootElement.GetString(JwtClaimTypes.Email) ?? context.User.RootElement.GetString(ClaimTypes.Email);
             userRequest.Name = context.User.RootElement.GetString(JwtClaimTypes.Name) ?? context.User.RootElement.GetString(ClaimTypes.Name);
-
-            (UserResponse Ok, _, HttpStatusCode statusCode) =
+            
+            (UserResponse Ok , _, HttpStatusCode statusCode) = 
             await _httpClient.GetAsync<UserResponse, ErrorApi>(
             $"User/validate?Subject={HttpUtility.ParseQueryString(userRequest.Subject)}&Name={HttpUtility.ParseQueryString(userRequest.Name)}&Email={HttpUtility.ParseQueryString(userRequest.Email)}",
             _logger);

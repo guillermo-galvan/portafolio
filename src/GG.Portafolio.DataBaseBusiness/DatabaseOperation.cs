@@ -36,7 +36,7 @@ namespace GG.Portafolio.DataBaseBusiness
             return completeTransaction;
         }
 
-        public void WithTransaction(IDataBaseConnection connection, IEnumerable<DatabaseOperationModel> operatios,
+        public void WithTransaction(IDataBaseConnection connection, IEnumerable<DatabaseOperationModel> operatios, 
             ILogger logger)
         {
             try
@@ -55,7 +55,7 @@ namespace GG.Portafolio.DataBaseBusiness
             }
         }
 
-        public void WithoutTransaction(IDataBaseConnection connection, IEnumerable<DatabaseOperationModel> operatios,
+        public void WithoutTransaction(IDataBaseConnection connection, IEnumerable<DatabaseOperationModel> operatios, 
             ILogger logger)
         {
             try

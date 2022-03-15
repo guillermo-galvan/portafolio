@@ -8,7 +8,7 @@ namespace GG.Portafolio.Api.Model
         public string Audience { get; set; }
 
         public AudienceRequirement(string audience)
-        {
+        { 
             Audience = audience ?? throw new ArgumentNullException(nameof(audience));
         }
     }

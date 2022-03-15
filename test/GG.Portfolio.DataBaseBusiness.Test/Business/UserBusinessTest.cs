@@ -44,7 +44,7 @@ namespace GG.Portafolio.DataBaseBusiness.Test.Business
         [Fact]
         public void UserBusiness_GetUser_NotNull()
         {
-            Assert.NotNull(_business.GetUser(Guid.NewGuid().ToString(), "tests@gmail.com", "Test"));
+            Assert.NotNull(_business.GetUser(Guid.NewGuid().ToString(), "tests@gmail.com","Test"));
         }
 
         [Fact]

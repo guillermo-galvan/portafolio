@@ -15,7 +15,7 @@ namespace GG.SSO.DataBaseBusiness.Business
         private readonly UserTokensSentences _userTokensSentences;
         private readonly ILogger<UserTokensBusiness> _logger;
 
-        public UserTokensBusiness(UserTokensSentences userTokensSentences, ILogger<UserTokensBusiness> logger)
+        public UserTokensBusiness(UserTokensSentences userTokensSentences, ILogger<UserTokensBusiness> logger )
         {
             _logger = logger;
             _userTokensSentences = userTokensSentences;

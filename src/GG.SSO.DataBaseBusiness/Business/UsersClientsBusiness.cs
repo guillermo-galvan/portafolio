@@ -77,7 +77,7 @@ namespace GG.SSO.DataBaseBusiness.Business
             try
             {
                 return usersId.Any() ? UsersClients.Read(_usersClientsSentences.AddInCliteriByUsers_Id(usersId)
-                                                                               .GetCriteriaCollection())
+                                                                               .GetCriteriaCollection()) 
                     : new List<UsersClients>();
             }
             catch (Exception ex)

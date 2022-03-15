@@ -43,7 +43,7 @@ namespace GG.Portafolio.Site.Test
         }
 
         internal static ClaimsPrincipal GetClaimsPrincipal()
-        {
+        { 
             return new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
             {
                 new Claim(ClaimTypes.NameIdentifier, Guid.NewGuid().ToString()),

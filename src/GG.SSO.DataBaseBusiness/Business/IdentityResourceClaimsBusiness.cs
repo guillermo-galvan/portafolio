@@ -12,7 +12,7 @@ namespace GG.SSO.DataBaseBusiness.Business
         private readonly IdentityResourceClaimsSentences _identityResourceClaimsSentences;
         private readonly ILogger<IdentityResourceClaimsBusiness> _logger;
 
-        public IdentityResourceClaimsBusiness(IdentityResourceClaimsSentences identityResourceClaimsSentences,
+        public IdentityResourceClaimsBusiness(IdentityResourceClaimsSentences identityResourceClaimsSentences, 
             ILogger<IdentityResourceClaimsBusiness> logger)
         {
             _identityResourceClaimsSentences = identityResourceClaimsSentences;
@@ -26,7 +26,7 @@ namespace GG.SSO.DataBaseBusiness.Business
             {
                 return IdentityResourceClaims.Read();
             }
-            catch (Exception ex)
+            catch (Exception  ex)
             {
                 _logger.LogError(ex, "{Name}", MethodBase.GetCurrentMethod().Name);
                 throw;

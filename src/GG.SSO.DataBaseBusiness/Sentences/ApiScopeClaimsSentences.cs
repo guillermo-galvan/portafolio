@@ -13,7 +13,7 @@ namespace GG.SSO.DataBaseBusiness.Sentences
         public ApiScopeClaimsSentences(ICriteriaBuilder criteriaBuilder) : base(criteriaBuilder)
         { }
 
-        public ApiScopeClaimsSentences AddInCliteriByApiScopes_Id(IEnumerable<int> elements,
+        public ApiScopeClaimsSentences AddInCliteriByApiScopes_Id(IEnumerable<int> elements, 
             LogicalOperator logicalOperator = LogicalOperator.AND)
         {
             _criteriaBuilder.AddInCriteria(nameof(ApiScopeClaims.ApiScopes_Id), elements, logicalOperator);

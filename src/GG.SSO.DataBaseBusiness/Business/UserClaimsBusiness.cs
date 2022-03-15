@@ -89,7 +89,7 @@ namespace GG.SSO.DataBaseBusiness.Business
             }
         }
 
-        public IEnumerable<UserClaims> Get(Claim claim)
+        public IEnumerable<UserClaims> Get( Claim claim)
         {
             try
             {

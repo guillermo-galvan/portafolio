@@ -8,17 +8,20 @@ using GG.SSO.Models;
 using GG.SSO.Store.IdentityServer;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Logging;
 using System;
 using System.Collections.Generic;
 using System.Data.CRUD;
 using System.Data.CRUD.MySql;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -36,6 +39,7 @@ namespace GG.SSO
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            IdentityModelEventSource.ShowPII = true;
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-MX");
             ConnectionDataBaseCollection.Connections.Add("MainConnection",new MySqlDataBaseConnection(Configuration.GetConnectionString("MainConnection")));
 
@@ -49,19 +53,21 @@ namespace GG.SSO
             services.AddScoped<ICorsPolicyService, CorsPolicyService>();
             services.AddScoped<IPersistedGrantStore, PersistedGrantStore>();
 
+            services.AddDataProtection().SetApplicationName("GG.SSO.DuendeIdentity")
+                .PersistKeysToFileSystem(new DirectoryInfo(Configuration["PersistKeysDirectory"]));
+            
             //duende identity
-            var builder = services.AddIdentityServer()
-                                 .AddResourceStore<ResourceStore>()
-                                 .AddClientStore<ClientStore>()
-                                 .AddCorsPolicyService<CorsPolicyService>()
-                                 .AddAspNetIdentity<ApplicationUser>();
+            var builder = services.AddIdentityServer(options =>
+            {
+                options.KeyManagement.Enabled = true;
+            })
+            .AddResourceStore<ResourceStore>()
+            .AddClientStore<ClientStore>()
+            .AddCorsPolicyService<CorsPolicyService>()
+            .AddAspNetIdentity<ApplicationUser>()
+            .AddSigningKeyStore<SigningKeyStore>();
 
             builder.AddProfileService<ProfileService>();
-
-#if DEBUG
-            //This is for dev only scenarios when you don’t have a certificate to use.
-            builder.AddDeveloperSigningCredential();
-#endif
 
             if (externalAuthentication.Any())
             {

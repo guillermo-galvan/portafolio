@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using GG.Portafolio.Shared.Blog;
+using GG.Portafolio.Site.Generic.Interfaces;
+using GG.Portafolio.Site.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -9,9 +12,6 @@ using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 using GG.Portafolio.Shared;
-using GG.Portafolio.Shared.Blog;
-using GG.Portafolio.Site.Models;
-using GG.Portafolio.Site.Generic.Interfaces;
 
 namespace GG.Portafolio.Site.Controllers
 {
@@ -55,7 +55,7 @@ namespace GG.Portafolio.Site.Controllers
         {
             DefaultViews defaultViews = TempData.ContainsKey("DefaultViews") ? (DefaultViews)TempData["DefaultViews"] : DefaultViews.Home;
             if (defaultViews == DefaultViews.Blog)
-            {
+            { 
                 ViewBag.Blogs = await GetBlogs();
             }
             ViewBag.Home = true;
@@ -83,7 +83,7 @@ namespace GG.Portafolio.Site.Controllers
             return PartialView();
         }
 
-        public PartialViewResult AboutMe()
+        public PartialViewResult AboutMe() 
         {
             return PartialView();
         }

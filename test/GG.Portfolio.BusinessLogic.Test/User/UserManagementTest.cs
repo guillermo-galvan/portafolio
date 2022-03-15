@@ -54,7 +54,7 @@ namespace GG.Portafolio.BusinessLogic.Test.User
         [Fact]
         public void UserManagement_Validate_True()
         {
-            Assert.True(_management.Validate(new UserRequest
+            Assert.True(_management.Validate(new UserRequest 
             {
                 Email = "Test@gmail.como",
                 Name = "Test",
@@ -86,8 +86,7 @@ namespace GG.Portafolio.BusinessLogic.Test.User
         [Fact]
         public void UserManagement_Update_True()
         {
-            _management.Update(new Entity.Table.Blog.User
-            {
+            _management.Update(new Entity.Table.Blog.User { 
                 Name = "Test",
                 Email = "test@gmail.com",
                 Id = Guid.NewGuid().ToString(),

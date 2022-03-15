@@ -1,5 +1,4 @@
-﻿using GG.Portafolio.Site.Test;
-using GG.Portafolio.Shared.TemplateWord;
+﻿using GG.Portafolio.Shared.TemplateWord;
 using GG.Portafolio.Site.Controllers;
 using GG.Portafolio.Site.Generic.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -52,14 +51,13 @@ namespace GG.Portafolio.Site.Test.Controllers
         [Fact]
         public async void TemplateWordController_Index_IsType_FileContentResult()
         {
-            var result = await _controller.Index(new TemplateRequest
-            {
+            var result = await _controller.Index(new TemplateRequest {
                 Name = "Name",
                 ColumnName1 = "ColumnName1",
                 ColumnName2 = "ColumnName2",
                 ColumnName3 = "ColumnName3"
             });
-            var viewResult = Assert.IsType<FileContentResult>(result);
+            var viewResult =  Assert.IsType<FileContentResult>(result);
             Assert.NotEmpty(viewResult.FileContents);
         }
 
@@ -76,7 +74,7 @@ namespace GG.Portafolio.Site.Test.Controllers
             });
             _controller.ModelState.Clear();
             var viewResult = Assert.IsType<ViewResult>(result);
-            var model = Assert.IsType<TemplateRequest>(viewResult.ViewData.Model);
+            var model = Assert.IsType< TemplateRequest >(viewResult.ViewData.Model);
             Assert.Equal("Name", model.Name);
         }
 

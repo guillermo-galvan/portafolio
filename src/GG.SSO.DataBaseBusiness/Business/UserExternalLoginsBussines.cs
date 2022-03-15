@@ -13,7 +13,7 @@ namespace GG.SSO.DataBaseBusiness.Business
         private readonly UserExternalLoginsSentences _userExternalLoginsSentences;
         private readonly ILogger<UserExternalLoginsBussines> _logger;
 
-        public UserExternalLoginsBussines(UserExternalLoginsSentences userExternalLoginsSentences,
+        public UserExternalLoginsBussines(UserExternalLoginsSentences userExternalLoginsSentences, 
             ILogger<UserExternalLoginsBussines> logger)
         {
             _logger = logger;
@@ -28,8 +28,8 @@ namespace GG.SSO.DataBaseBusiness.Business
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{methodName} {userExternalLogins}",
-                    MethodBase.GetCurrentMethod().Name, userExternalLogins);
+                _logger.LogError(ex, "{methodName} {userExternalLogins}", 
+                    MethodBase.GetCurrentMethod().Name,userExternalLogins);
                 throw;
             }
         }
@@ -74,7 +74,7 @@ namespace GG.SSO.DataBaseBusiness.Business
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{methodName} {user_id} {loginProvider} {providerKey}",
+                _logger.LogError(ex, "{methodName} {user_id} {loginProvider} {providerKey}", 
                     MethodBase.GetCurrentMethod().Name, user_id, loginProvider, providerKey);
                 throw;
             }

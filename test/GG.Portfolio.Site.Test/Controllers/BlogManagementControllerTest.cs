@@ -1,9 +1,8 @@
-﻿using GG.Portafolio.Site.Test;
-using GG.Portafolio.Site.Test.Data;
-using GG.Portafolio.Shared.Blog;
+﻿using GG.Portafolio.Shared.Blog;
 using GG.Portafolio.Site.Controllers;
 using GG.Portafolio.Site.Generic.Interfaces;
 using GG.Portafolio.Site.Models;
+using GG.Portafolio.Site.Test.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -37,7 +36,7 @@ namespace GG.Portafolio.Site.Test.Controllers
 
             _mockIWebHostEnvironment = Utilities.GetMockIWebHostEnvironment();
             _httpClient = MockIHttpClientFactory.GetMockIHttpClientWithToken();
-
+            
             MockIHttpClientFactory.SetBlogResponse();
             MockIHttpClientFactory.SetBlogManagementModel();
             MockIHttpClientFactory.SetBlogOperationResponse();
@@ -47,7 +46,7 @@ namespace GG.Portafolio.Site.Test.Controllers
                 TinymceKey = "TinymceKey"
             });
 
-            _controller = new(_logger, _httpClient.Object, _configurationValues, _mockIWebHostEnvironment.Object)
+            _controller = new (_logger, _httpClient.Object, _configurationValues, _mockIWebHostEnvironment.Object)
             {
                 TempData = Utilities.GetTempDataDictionary()
             };
@@ -71,7 +70,7 @@ namespace GG.Portafolio.Site.Test.Controllers
                     User = Utilities.GetClaimsPrincipal(),
                 };
             }
-
+            
             var result = await _controller.Index();
             _controller.ControllerContext.HttpContext = null;
             var viewResult = Assert.IsType<ViewResult>(result);
@@ -97,7 +96,7 @@ namespace GG.Portafolio.Site.Test.Controllers
             var result = await _controller.NewEdit(title);
             _controller.TempData.Clear();
             var viewResult = Assert.IsType<ViewResult>(result);
-            var model = Assert.IsAssignableFrom<BlogManagementModel>(viewResult.ViewData.Model);
+            var model = Assert.IsAssignableFrom<BlogManagementModel>(viewResult.ViewData.Model);            
             if (!isEmptyModel)
             {
                 Assert.Equal(title, model.Title);
@@ -132,7 +131,7 @@ namespace GG.Portafolio.Site.Test.Controllers
             _controller.ModelState.Clear();
             var jsonResult = Assert.IsType<JsonResult>(result);
             var model = (ImageLoadResponse)jsonResult.Value;
-            Assert.Equal(success, model.Success);
+            Assert.Equal(success,model.Success);
         }
 
         [Fact]
@@ -144,7 +143,7 @@ namespace GG.Portafolio.Site.Test.Controllers
                 User = Utilities.GetClaimsPrincipal(),
             };
 
-            var result = await _controller.Save(new BlogManagementModel
+            var result = await _controller.Save(new BlogManagementModel 
             {
                 Content = "Content",
                 CreateDate = DateTime.Now.Ticks,

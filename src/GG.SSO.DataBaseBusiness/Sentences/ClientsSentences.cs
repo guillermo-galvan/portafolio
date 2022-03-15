@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GG.SSO.DataBaseBusiness.Sentences
 {
-    public class ClientsSentences : SentencesBase
+    public class ClientsSentences: SentencesBase
     {
         public ClientsSentences(ICriteriaBuilder criteriaBuilder) : base(criteriaBuilder)
         { }

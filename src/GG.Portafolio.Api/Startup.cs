@@ -8,10 +8,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Logging;
 using Microsoft.OpenApi.Models;
 using System.Data.CRUD;
 using System.Data.CRUD.MySql;
 using System.Globalization;
+using System.Net.Http;
 
 namespace GG.Portafolio.Api
 {
@@ -27,12 +29,14 @@ namespace GG.Portafolio.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            IdentityModelEventSource.ShowPII = true;
+
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-MX");
 
-            ConnectionDataBaseCollection.Connections.Add("MainConnection", new MySqlDataBaseConnection(Configuration.GetConnectionString("MainConnection")));
+            ConnectionDataBaseCollection.Connections.Add("MainConnection",new MySqlDataBaseConnection(Configuration.GetConnectionString("MainConnection")));
 
             IConfigurationSection configurationMyKeys = Configuration.GetSection(nameof(OAuthConfiguration));
-            OAuthConfiguration oAuthConfiguration = configurationMyKeys.Get<OAuthConfiguration>();
+            OAuthConfiguration oAuthConfiguration = configurationMyKeys.Get<OAuthConfiguration>();            
             services.Configure<OAuthConfiguration>(configurationMyKeys);
 
             services.AddBusinessLogic();
@@ -42,7 +46,7 @@ namespace GG.Portafolio.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GGPuntoYComa.Portfolio.Api", Version = "v1" });
             });
-
+            
             services.AddSingleton<IAuthorizationHandler, AudienceHandler>();
 
             services.AddAuthentication(options =>
@@ -52,8 +56,12 @@ namespace GG.Portafolio.Api
             })
             .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
             {
-                options.Authority = oAuthConfiguration.Authority;
+                options.Authority = oAuthConfiguration.Authority;                                
                 options.TokenValidationParameters.ValidateAudience = false;
+                options.BackchannelHttpHandler = new HttpClientHandler()
+                {
+                    ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true
+                };
             });
 
             services.AddAuthorization(options =>

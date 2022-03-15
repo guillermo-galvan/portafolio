@@ -136,7 +136,7 @@ namespace GG.Portafolio.Api.Test.Controllers
                 DetailRows = null,
             };
 
-            var result = _controller.GenerateTemplate(request);
+            var result = _controller.GenerateTemplate(request);            
             var actionResult = Assert.IsType<ActionResult<TemplateResponse>>(result);
             Assert.IsType<BadRequestResult>(actionResult.Result);
         }

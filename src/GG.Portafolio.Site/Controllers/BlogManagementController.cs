@@ -32,7 +32,7 @@ namespace GG.Portafolio.Site.Controllers
 
         public BlogManagementController(ILogger<BlogManagementController> logger, IHttpClientWithToken httpClient, IOptions<ConfigurationValues> options,
             IWebHostEnvironment environment)
-        {
+        { 
             _logger = logger;
             _httpClient = httpClient;
             _configurationValues = options.Value;
@@ -64,11 +64,11 @@ namespace GG.Portafolio.Site.Controllers
 
             try
             {
-                (IEnumerable<BlogResponse> Ok, ErrorApi ErrorApi, HttpStatusCode Status) =
+                (IEnumerable<BlogResponse> Ok, ErrorApi ErrorApi, HttpStatusCode Status) = 
                     await _httpClient.GetAsync<IEnumerable<BlogResponse>, ErrorApi>("Blog/get", HttpContext, _logger);
 
                 if (Status == HttpStatusCode.OK)
-                {
+                { 
                     blogs.AddRange(Ok);
                 }
 
@@ -87,10 +87,10 @@ namespace GG.Portafolio.Site.Controllers
 
         public async Task<IActionResult> NewEdit(string blog)
         {
-            BlogManagementModel model = null;
+            BlogManagementModel model = null;            
             try
             {
-                ViewData["Operation"] = string.IsNullOrWhiteSpace(blog) ? "Nuevo" : "Editar";
+                ViewData["Operation"] = string.IsNullOrWhiteSpace(blog) ? "Nuevo": "Editar";
                 ViewData["TinymceKey"] = _configurationValues.TinymceKey;
 
                 model = string.IsNullOrWhiteSpace(blog) ? new BlogManagementModel { CreateDate = DateTime.Now.Ticks } :
@@ -154,7 +154,7 @@ namespace GG.Portafolio.Site.Controllers
                 {
                     string userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtClaimTypes.Subject || x.Type == ClaimTypes.NameIdentifier)?.Value;
                     string pathfiles = Path.Combine(_environment.WebRootPath, _nameFileImage, userId);
-                    BlogContentReponse Ok = await GetBlogManagementById<BlogContentReponse>(string.IsNullOrWhiteSpace(model.Id) ? "0" : model.Id, false);
+                    BlogContentReponse Ok= await GetBlogManagementById<BlogContentReponse>(string.IsNullOrWhiteSpace(model.Id) ? "0" : model.Id,false);
 
                     BlogNewRequest newRequest = Ok == null ?
                         new BlogNewRequest()
@@ -221,7 +221,7 @@ namespace GG.Portafolio.Site.Controllers
         {
             try
             {
-                _ = await _httpClient.DeleteAsync<string, ErrorApi>($"Blog/delete/{blog}", HttpContext, _logger);
+                _ = await _httpClient.DeleteAsync<string,ErrorApi>($"Blog/delete/{blog}", HttpContext, _logger);
             }
             catch (Exception ex)
             {

@@ -1,14 +1,14 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using GG.Portafolio.DataBaseBusiness.Business;
+using GG.Portafolio.Shared.Blog;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using GG.Portafolio.Entity.Table.Blog;
 using System.IO;
 using GG.Portafolio.DataBaseBusiness;
 using System.Data.CRUD;
-using GG.Portafolio.Shared.Blog;
-using GG.Portafolio.Entity.Table.Blog;
-using GG.Portafolio.DataBaseBusiness.Business;
 
 namespace GG.Portafolio.BusinessLogic.Blog
 {
@@ -16,7 +16,7 @@ namespace GG.Portafolio.BusinessLogic.Blog
     {
         private const string _error = "The Blog cannot be recovered.";
         private const string _titleIsAlready = "A blog with the title was already found.";
-        private const string _cannotSave = "Cannot save the detail file.";
+        private const string _cannotSave = "Cannot save the detail file.";        
         private const string _blogNotFound = "Blog not found";
 
         private readonly ILogger<BlogManagement> _logger;
@@ -65,17 +65,16 @@ namespace GG.Portafolio.BusinessLogic.Blog
                         {
                             Directory.CreateDirectory(pathFiles);
                         }
-
+                        
                         int countFile = Directory.GetFiles(pathFiles).Length;
-                        blogNewRequest.ContentFiles?.ForEach(x =>
-                        {
+                        blogNewRequest.ContentFiles?.ForEach(x => {
                             string extension = Path.GetExtension(x.Name);
                             blogDetail.Detail = blogDetail.Detail.Replace($"..{x.Url}", $"{webBase}/{blog.Create}/{countFile}{extension}");
                             blogDetail.Detail = blogDetail.Detail.Replace($"{x.Url}", $"{webBase}/{blog.Create}/{countFile}{extension}");
                             File.WriteAllBytes(Path.Combine(pathFiles, $"{countFile}{extension}"), x.File);
                             countFile++;
                         });
-
+                        
                     }
                     catch (Exception ex)
                     {
@@ -151,10 +150,10 @@ namespace GG.Portafolio.BusinessLogic.Blog
                     List<Entity.Table.Blog.User> users = new();
 
                     foreach (var comment in comments.Where(x => !string.IsNullOrWhiteSpace(x.User_Id)).GroupBy(x => x.User_Id))
-                    {
+                    { 
                         var user = _userBusiness.GetUserById(comment.Key);
                         if (user != null)
-                        {
+                        { 
                             users.Add(user);
                         }
                     }
@@ -164,7 +163,7 @@ namespace GG.Portafolio.BusinessLogic.Blog
                                        from l in left.DefaultIfEmpty()
                                        select Converts.ToComment(comment, l?.Name)).ToList();
                 }
-
+                
                 return result;
             }
             catch (Exception ex)
@@ -278,7 +277,7 @@ namespace GG.Portafolio.BusinessLogic.Blog
                 new DatabaseOperation().WithTransaction(connection, new List<DatabaseOperationModel>
                     {
                         new DatabaseOperationModel
-                        {
+                        { 
                             Entity = Converts.ToCommentEntity(comment),
                             Operation = OperationType.Insert
                         }

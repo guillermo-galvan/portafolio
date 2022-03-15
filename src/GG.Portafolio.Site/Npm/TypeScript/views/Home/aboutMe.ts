@@ -41,7 +41,7 @@ export class AboutMe extends Page implements ILoadPage {
     }
 
     private execScript() {
-        let script = document.getElementsByTagName('script')[0];
+        let script = <HTMLScriptElement>document.getElementById("scriptViewAboutMe");
         if (script) {
             try {
                 eval(script.text);

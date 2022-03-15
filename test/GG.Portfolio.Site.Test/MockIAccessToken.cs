@@ -22,15 +22,15 @@ namespace GG.Portafolio.Site.Test
         {
             lock (_objectLock)
             {
-
+                
                 if (_mockIAccessToken == null)
-                {
+                { 
                     _mockIAccessToken = new();
                     var path = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Documents", "success_token_response.json");
                     var content = File.ReadAllText(path);
 
-                    NetworkHandler handler = new(content, HttpStatusCode.OK);
-                    HttpClient client = new(handler)
+                    NetworkHandler handler = new (content, HttpStatusCode.OK);
+                    HttpClient client = new (handler)
                     {
                         BaseAddress = new Uri("http://server/token")
                     };
@@ -49,17 +49,17 @@ namespace GG.Portafolio.Site.Test
                     path = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Documents", "discovery_jwks.json");
                     var jwks = File.ReadAllText(path);
 
-                    handler = new(request =>
-                   {
-                       if (request.RequestUri.AbsoluteUri.EndsWith("jwks"))
-                       {
-                           return jwks;
-                       }
+                    handler = new (request =>
+                    {
+                        if (request.RequestUri.AbsoluteUri.EndsWith("jwks"))
+                        {
+                            return jwks;
+                        }
 
-                       return content;
-                   }, HttpStatusCode.OK);
+                        return content;
+                    }, HttpStatusCode.OK);
 
-                    client = new(handler);
+                    client = new (handler);
                     var cache = new DiscoveryCache("https://demo.identityserver.io", () => client);
                     var document = cache.GetAsync().Result;
                     _mockIAccessToken.Setup(m => m.DiscoveryDocumentResponse).Returns(document);

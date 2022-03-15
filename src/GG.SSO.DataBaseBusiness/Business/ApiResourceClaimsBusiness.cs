@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using GG.SSO.DataBaseBusiness.Sentences;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using GG.SSO.Entity.Table.Sso;
-using GG.SSO.DataBaseBusiness.Sentences;
 
 namespace GG.SSO.DataBaseBusiness.Business
 {

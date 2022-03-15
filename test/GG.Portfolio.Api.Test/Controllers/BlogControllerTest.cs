@@ -55,7 +55,7 @@ namespace GG.Portafolio.Api.Test.Controllers
                 new BlogCommentsBusiness(new BlogCommentsSentences(new CriteriaBuilder()), factory.CreateLogger<BlogCommentsBusiness>()),
                 new UserBusiness(new UserSentences(new CriteriaBuilder()), factory.CreateLogger<UserBusiness>()));
 
-            _controller = new(_logger, _mockIWebHostEnvironment.Object, _blogManagement);
+            _controller = new (_logger, _mockIWebHostEnvironment.Object, _blogManagement);
         }
 
         [Fact]
@@ -116,7 +116,7 @@ namespace GG.Portafolio.Api.Test.Controllers
 
             _controller.ControllerContext.HttpContext = new DefaultHttpContext { User = user };
 
-            var result = _controller.CreateBlog(new BlogNewRequest
+            var result = _controller.CreateBlog(new BlogNewRequest 
             {
                 Content = "Detail",
                 ContentFiles = new List<ContentFile>(),
@@ -168,7 +168,7 @@ namespace GG.Portafolio.Api.Test.Controllers
             }, "mock"));
 
             _controller.ControllerContext.HttpContext = new DefaultHttpContext { User = user };
-
+            
             var result = _controller.CreateBlog(new BlogNewRequest
             {
                 Content = "Detail",
@@ -177,7 +177,7 @@ namespace GG.Portafolio.Api.Test.Controllers
                 Title = string.Empty,
                 UserId = string.Empty,
             });
-
+            
             _controller.ControllerContext.HttpContext = null;
             var actionResult = Assert.IsType<ActionResult<BlogOperationResponse>>(result);
             Assert.IsType<BadRequestResult>(actionResult.Result);
@@ -260,10 +260,10 @@ namespace GG.Portafolio.Api.Test.Controllers
         [Fact]
         public void BlogController_CommentSave_IsType_OkResult()
         {
-            var result = _controller.CommentSave(new BlogComments
+            var result = _controller.CommentSave(new BlogComments 
             {
                 BlogId = Guid.NewGuid().ToString(),
-                Content = "Content",
+                Content= "Content",
                 Date = DateTime.Now,
                 Name = "Name",
                 User_Id = Guid.NewGuid().ToString(),

@@ -15,13 +15,13 @@ namespace GG.Portafolio.Site.Controllers
 {
     public class BlogController : Controller
     {
-        private readonly ILogger<BlogController> _logger;
+        private readonly ILogger<BlogController> _logger;        
         private readonly IHttpClient _httpClient;
 
         public BlogController(ILogger<BlogController> logger, IHttpClient httpClient)
-        {
+        { 
             _logger = logger;
-            _httpClient = httpClient;
+            _httpClient = httpClient;            
         }
 
         [Route("blog/{title}")]
@@ -31,7 +31,7 @@ namespace GG.Portafolio.Site.Controllers
 
             try
             {
-                (BlogContentWithCommentsReponse Ok, _, HttpStatusCode Status) =
+                (BlogContentWithCommentsReponse Ok, _, HttpStatusCode Status)  =
                     await _httpClient.GetAsync<BlogContentWithCommentsReponse, ErrorApi>($"Blog/getbytitle/{title}", _logger);
 
                 if (Status == HttpStatusCode.OK)

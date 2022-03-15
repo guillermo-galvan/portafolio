@@ -15,7 +15,7 @@ namespace GG.Portafolio.Shared.TemplateWord
         public string Name { get; set; }
 
         [Required(ErrorMessage = "El campo titulo columna 1 es requerido.")]
-        [Display(Name = "Titulo columna 1", Prompt = "Titulo columna 1")]
+        [Display(Name = "Titulo columna 1", Prompt = "Titulo columna 1")]        
         public string ColumnName1 { get; set; }
 
         [Required(ErrorMessage = "El campo titulo columna 2 es requerido.")]

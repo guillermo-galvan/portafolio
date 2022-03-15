@@ -26,7 +26,7 @@ namespace GG.Portafolio.BusinessLogic.User
         {
             try
             {
-                var userDb = _userBusiness.GetUserById(user.Subject);
+                var userDb =_userBusiness.GetUserById(user.Subject);
 
                 if (userDb == null)
                 {
@@ -55,7 +55,7 @@ namespace GG.Portafolio.BusinessLogic.User
         {
             try
             {
-                Create(user.Subject, user.Email, user.Name);
+                Create(user.Subject,user.Email, user.Name);
             }
             catch (Exception ex)
             {

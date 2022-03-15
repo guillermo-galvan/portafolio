@@ -208,5 +208,47 @@ namespace GG.SSO.BusinesLogic.Helpers
 
 			return result;
 		}
+
+		public static SerializedKey ToSerializedKey(Keys keys)
+		{ 
+			SerializedKey result = null;
+
+			if (keys != null)
+			{
+				result = new SerializedKey 
+				{
+					Algorithm = keys.Algorithm,
+					Created = keys.Created,
+					Data = keys.Data,
+					DataProtected = keys.DataProtected,
+					Id = keys.Id,
+					IsX509Certificate = keys.IsX509Certificate,
+					Version = keys.Version,
+				};
+			}
+
+			return result;
+		}
+
+		public static Keys ToKey(SerializedKey serializedKey)
+		{
+			Keys result = null;
+
+			if (serializedKey != null)
+			{
+				result = new Keys
+				{
+					Algorithm = serializedKey.Algorithm,
+					Created = serializedKey.Created,
+					Data = serializedKey.Data,
+					DataProtected = serializedKey.DataProtected,
+					Id = serializedKey.Id,
+					IsX509Certificate = serializedKey.IsX509Certificate,
+					Version = serializedKey.Version,
+				};
+			}
+
+			return result;
+		}
 	}
 }

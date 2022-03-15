@@ -1,10 +1,10 @@
-﻿using GG.Portafolio.Entity.Table.Blog;
+﻿using GG.Portafolio.DataBaseBusiness.Sentences;
+using GG.Portafolio.Entity.Table.Blog;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using GG.Portafolio.DataBaseBusiness.Sentences;
 
 namespace GG.Portafolio.DataBaseBusiness.Business
 {
@@ -42,7 +42,7 @@ namespace GG.Portafolio.DataBaseBusiness.Business
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{Name} {id}", MethodBase.GetCurrentMethod().Name, id);
+                _logger.LogError(ex, "{Name} {id}", MethodBase.GetCurrentMethod().Name,id);
                 throw;
             }
         }

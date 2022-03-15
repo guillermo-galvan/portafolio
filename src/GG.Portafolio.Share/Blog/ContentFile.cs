@@ -2,7 +2,7 @@
 
 namespace GG.Portafolio.Shared.Blog
 {
-    public class ContentFile
+    public  class ContentFile
     {
         [Required]
         public string Name { get; set; }

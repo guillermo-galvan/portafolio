@@ -11,7 +11,7 @@ namespace GG.SSO.DataBaseBusiness.Sentences
     public class IdentityResourcesSentences : SentencesBase
     {
         public IdentityResourcesSentences(ICriteriaBuilder criteriaBuilder) : base(criteriaBuilder)
-        { }
+        {}
 
         public IdentityResourcesSentences AddCliteriById(int id, LogicalOperator logicalOperator = LogicalOperator.AND)
         {

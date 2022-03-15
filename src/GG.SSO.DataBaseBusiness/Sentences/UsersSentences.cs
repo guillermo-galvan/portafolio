@@ -13,7 +13,7 @@ namespace GG.SSO.DataBaseBusiness.Sentences
         public UsersSentences(ICriteriaBuilder criteriaBuilder) : base(criteriaBuilder)
         { }
 
-        public UsersSentences AddCliteriById(string id, LogicalOperator logicalOperator = LogicalOperator.AND)
+        public UsersSentences AddCliteriById(string id,LogicalOperator logicalOperator = LogicalOperator.AND)
         {
             _criteriaBuilder.AddEqualCriteria(nameof(Users.Id), id, logicalOperator);
 

@@ -1,5 +1,6 @@
 ﻿using Duende.IdentityServer.Models;
 using GG.SSO.BusinesLogic.Helpers;
+using GG.SSO.DataBaseBusiness;
 using GG.SSO.DataBaseBusiness.Business;
 using GG.SSO.Entity.Table.Sso;
 using Microsoft.Extensions.Caching.Memory;
@@ -10,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
-using GG.SSO.DataBaseBusiness;
 
 namespace GG.SSO.BusinesLogic.IdentityServer
 {

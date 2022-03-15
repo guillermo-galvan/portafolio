@@ -74,7 +74,7 @@ namespace GG.SSO.DataBaseBusiness.Business
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Get {users_Id}", users_Id);
+                _logger.LogError(ex, "Get {users_Id}",  users_Id);
                 throw;
             }
         }

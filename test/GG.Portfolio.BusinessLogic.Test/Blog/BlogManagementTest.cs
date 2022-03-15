@@ -97,13 +97,13 @@ namespace GG.Portafolio.BusinessLogic.Test.Blog
         [Fact]
         public void BlogManagement_CreateNewBlog_NotNull()
         {
-            Assert.NotNull(_blogManagement.CreateNewBlog(new Shared.Blog.BlogNewRequest
+            Assert.NotNull(_blogManagement.CreateNewBlog(new Shared.Blog.BlogNewRequest 
             {
                 Content = "Detail",
                 ContentFiles = new List<Shared.Blog.ContentFile>(),
                 Dsc = "Dsc",
                 Title = "Title",
-                UserId = Guid.NewGuid().ToString(),
+                UserId  = Guid.NewGuid().ToString(),
             }, "Test", "Test"));
         }
 
@@ -198,7 +198,7 @@ namespace GG.Portafolio.BusinessLogic.Test.Blog
         [Fact]
         public void BlogManagement_CommentSave()
         {
-            _blogManagement.CommentSave(new Shared.Blog.BlogComments
+            _blogManagement.CommentSave(new Shared.Blog.BlogComments 
             {
                 BlogId = Guid.NewGuid().ToString(),
                 Content = "Test",

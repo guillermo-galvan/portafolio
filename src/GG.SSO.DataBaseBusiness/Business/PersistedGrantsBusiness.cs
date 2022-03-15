@@ -13,7 +13,7 @@ namespace GG.SSO.DataBaseBusiness.Business
         readonly PersistedGrantsSentences _persistedGrantsSentences;
         readonly ILogger<PersistedGrantsBusiness> _logger;
 
-        public PersistedGrantsBusiness(PersistedGrantsSentences persistedGrantsSentences,
+        public PersistedGrantsBusiness(PersistedGrantsSentences persistedGrantsSentences, 
             ILogger<PersistedGrantsBusiness> logger)
         {
             _persistedGrantsSentences = persistedGrantsSentences;
@@ -29,7 +29,7 @@ namespace GG.SSO.DataBaseBusiness.Business
         }
 
         private IDictionary<string, object> GetKeyValuesByDelete()
-        {
+        { 
             return new Dictionary<string, object>
                 {
                     { nameof(PersistedGrants.IsDeleted), true }
@@ -40,12 +40,12 @@ namespace GG.SSO.DataBaseBusiness.Business
         {
             try
             {
-                GetCriteria(filter);
+                GetCriteria(filter);               
                 return PersistedGrants.Read(_persistedGrantsSentences.AddCliteriByIsDeleted(false).GetCriteriaCollection());
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{Name} {filter}", MethodBase.GetCurrentMethod().Name, filter);
+                _logger.LogError(ex, "{Name} {filter}", MethodBase.GetCurrentMethod().Name,filter);
                 throw;
             }
         }
@@ -54,10 +54,10 @@ namespace GG.SSO.DataBaseBusiness.Business
         {
             try
             {
-                return PersistedGrants.Read(_persistedGrantsSentences.AddCliteriByKey(key)
-                                                                     .AddCliteriByIsDeleted(false)
-                                                                     .GetCriteriaCollection())
-                                      .FirstOrDefault();
+               return PersistedGrants.Read(_persistedGrantsSentences.AddCliteriByKey(key)
+                                                                    .AddCliteriByIsDeleted(false)
+                                                                    .GetCriteriaCollection())
+                                     .FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -75,7 +75,7 @@ namespace GG.SSO.DataBaseBusiness.Business
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{Nmae} {filter}", MethodBase.GetCurrentMethod().Name, filter);
+                _logger.LogError(ex, "{Nmae} {filter}", MethodBase.GetCurrentMethod().Name,filter);
                 throw;
             }
         }
@@ -90,7 +90,7 @@ namespace GG.SSO.DataBaseBusiness.Business
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{Name} {key}", MethodBase.GetCurrentMethod().Name, key);
+                _logger.LogError(ex, "{Name} {key}", MethodBase.GetCurrentMethod().Name,key);
                 throw;
             }
         }
@@ -103,7 +103,7 @@ namespace GG.SSO.DataBaseBusiness.Business
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{Name} {grant}", MethodBase.GetCurrentMethod().Name, grant);
+                _logger.LogError(ex, "{Name} {grant}",MethodBase.GetCurrentMethod().Name, grant);
                 throw;
             }
         }

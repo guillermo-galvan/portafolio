@@ -18,17 +18,17 @@ namespace GG.Portafolio.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Policy.PolicyBasic)]
+    [Authorize(Policy.PolicyBasic)]    
     public class BlogController : ControllerBase
     {
-        private readonly ILogger<BlogController> _logger;
+        private readonly ILogger<BlogController> _logger;        
         private readonly IWebHostEnvironment _environment;
         private readonly BlogManagement _blogManagement;
 
         public BlogController(ILogger<BlogController> logger, IWebHostEnvironment environment,
             BlogManagement blogManagement)
         {
-            _logger = logger;
+            _logger = logger;            
             _environment = environment;
             _blogManagement = blogManagement;
         }
@@ -69,7 +69,7 @@ namespace GG.Portafolio.Api.Controllers
 
         [HttpGet("getbytitle/{title}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]        
         public ActionResult<BlogContentWithCommentsReponse> Get(string title)
         {
             try
@@ -97,9 +97,12 @@ namespace GG.Portafolio.Api.Controllers
 
                 if (ModelState.IsValid && model.UserId == userId)
                 {
+                   var host = string.IsNullOrEmpty(HttpContext.Request.PathBase) ? HttpContext.Request.Host.Value : 
+                        $"{HttpContext.Request.Host.Value}{HttpContext.Request.PathBase}" ;
+                        
                     BlogOperationResponse response =
-                    _blogManagement.CreateNewBlog(model, _environment.WebRootPath, $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.Value}");
-                    return response.Errores.Any() ? Conflict() : response;
+                    _blogManagement.CreateNewBlog(model, _environment.WebRootPath,$"{HttpContext.Request.Scheme}://{host}");
+                    return response.Errores.Any() ? Conflict() : response ;
                 }
                 else
                 {
@@ -108,7 +111,7 @@ namespace GG.Portafolio.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{Name} {model}.", MethodBase.GetCurrentMethod().Name, model);
+                _logger.LogError(ex, "{Name} {model}.",MethodBase.GetCurrentMethod().Name,model);
                 return BadRequest();
             }
         }
@@ -125,8 +128,11 @@ namespace GG.Portafolio.Api.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    var host = string.IsNullOrEmpty(HttpContext.Request.PathBase) ? HttpContext.Request.Host.Value :
+                       $"{HttpContext.Request.Host.Value}{HttpContext.Request.PathBase}";
+
                     BlogOperationResponse response =
-                    _blogManagement.EditBlog(model, _environment.WebRootPath, $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.Value}");
+                    _blogManagement.EditBlog(model, _environment.WebRootPath, $"{HttpContext.Request.Scheme}://{host}");
 
                     return response.Errores.Any() ? Conflict() : response;
                 }
@@ -144,7 +150,7 @@ namespace GG.Portafolio.Api.Controllers
 
         [Authorize(Policy.PolicyAdmin)]
         [HttpDelete("delete/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status200OK)]        
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult BlogDelete(string id)
@@ -155,14 +161,14 @@ namespace GG.Portafolio.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{Name} {id}", MethodBase.GetCurrentMethod().Name, id);
+                _logger.LogError(ex, "{Name} {id}", MethodBase.GetCurrentMethod().Name,id);
                 return BadRequest();
             }
         }
 
         [HttpPost("commentsave")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]        
         public ActionResult CommentSave(BlogComments comment)
         {
             try
@@ -176,7 +182,7 @@ namespace GG.Portafolio.Api.Controllers
                 {
                     return BadRequest();
                 }
-
+                
             }
             catch (Exception ex)
             {

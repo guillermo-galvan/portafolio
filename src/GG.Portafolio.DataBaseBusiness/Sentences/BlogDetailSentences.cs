@@ -3,7 +3,7 @@ using System.Data.CRUD;
 
 namespace GG.Portafolio.DataBaseBusiness.Sentences
 {
-    public class BlogDetailSentences : SentencesBase
+    public  class BlogDetailSentences : SentencesBase
     {
         public BlogDetailSentences(ICriteriaBuilder criteriaBuilder) : base(criteriaBuilder)
         { }

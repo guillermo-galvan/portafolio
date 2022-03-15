@@ -42,10 +42,10 @@ namespace GG.Portafolio.Site.Controllers
             ViewBag.Json = JsonSerializer.Serialize(new
             {
                 Identity = b,
-                Claims = a,
+                Claims = a,               
             }, new JsonSerializerOptions { WriteIndented = true });
-
-            var accessToken = await HttpContext.GetTokenAsync("access_token");
+            
+            var accessToken = await HttpContext.GetTokenAsync("access_token");            
             HttpClient client = _httpClientFactory.CreateClient(nameof(ConfigurationValues.SsoUrl));
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
             var jsonElement = await client.GetFromJsonAsync<JsonElement>(_accessToken.DiscoveryDocumentResponse.UserInfoEndpoint);

@@ -20,6 +20,6 @@ namespace GG.Portafolio.Shared
 
         public string AdditionalProp3 { get; set; }
 
-        public Dictionary<string, string[]> Errors { get; set; }
+        public Dictionary<string,string[]> Errors { get; set; }
     }
 }

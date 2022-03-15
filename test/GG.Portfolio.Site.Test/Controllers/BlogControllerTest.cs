@@ -1,8 +1,7 @@
-﻿using GG.Portafolio.Site.Test;
-using GG.Portafolio.Site.Test.Data;
-using GG.Portafolio.Shared.Blog;
+﻿using GG.Portafolio.Shared.Blog;
 using GG.Portafolio.Site.Controllers;
 using GG.Portafolio.Site.Generic.Interfaces;
+using GG.Portafolio.Site.Test.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,7 +31,7 @@ namespace GG.Portafolio.Site.Test.Controllers
             _httpClient = MockIHttpClientFactory.GetMockHttpClient();
             MockIHttpClientFactory.SetBlogContentWithCommentsReponse();
 
-            _controller = new(_logger, _httpClient.Object);
+            _controller = new (_logger,_httpClient.Object);
         }
 
         [Fact]
@@ -56,7 +55,7 @@ namespace GG.Portafolio.Site.Test.Controllers
                 Assert.Equal(title, model.Title);
             }
             else
-            {
+            { 
                 Assert.True(string.IsNullOrWhiteSpace(model.Title));
             }
         }

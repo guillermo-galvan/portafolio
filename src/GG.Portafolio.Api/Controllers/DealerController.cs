@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using GG.Portafolio.BusinessLogic.Dealer;
+using GG.Portafolio.Shared.Dealer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,8 +9,6 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Authorization;
 using GG.Portafolio.Shared;
-using GG.Portafolio.Shared.Dealer;
-using GG.Portafolio.BusinessLogic.Dealer;
 
 namespace GG.Portafolio.Api.Controllers
 {
@@ -23,7 +23,7 @@ namespace GG.Portafolio.Api.Controllers
         public DealerController(ILogger<DealerController> logger, DealerManagement dealerManagement)
         {
             _logger = logger;
-            _dealerManagement = dealerManagement;
+            _dealerManagement = dealerManagement; 
         }
 
         [HttpGet("gettimelist")]
@@ -37,7 +37,7 @@ namespace GG.Portafolio.Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "{Name} {date}", MethodBase.GetCurrentMethod().Name, date);
+                _logger.LogError(ex, "{Name} {date}", MethodBase.GetCurrentMethod().Name,date);
                 return BadRequest();
             }
         }

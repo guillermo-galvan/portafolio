@@ -1,10 +1,10 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using GG.Portafolio.Site.Generic.Interfaces;
+using Microsoft.Extensions.Logging;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Reflection;
 using System;
 using System.Net;
-using GG.Portafolio.Site.Generic.Interfaces;
 
 namespace GG.Portafolio.Site.Generic.Rest
 {
@@ -21,13 +21,13 @@ namespace GG.Portafolio.Site.Generic.Rest
         {
             try
             {
-                _accessToken.VerifyAutentificacion(logger);
-                return await GetAsync<TResultOk, TResultError>(urlRelative, _accessToken.TokenInfo.TokenResponse.AccessToken, logger);
+                _accessToken.VerifyAutentificacion(logger);                
+                return await GetAsync<TResultOk, TResultError>(urlRelative, _accessToken.TokenInfo.TokenResponse.AccessToken,logger);
             }
             catch (Exception ex)
             {
                 logger?.LogError(ex, "Method {name} URL: {urlRelative} Type ReturnOk {result} ReturnError {error} ",
-                    MethodBase.GetCurrentMethod().Name, urlRelative, typeof(TResultOk), typeof(TResultError));
+                    MethodBase.GetCurrentMethod().Name,urlRelative, typeof(TResultOk), typeof(TResultError));
                 throw;
             }
         }

@@ -1,5 +1,4 @@
-﻿using GG.Portafolio.DataBaseBusiness;
-using GG.Portafolio.Entity.Table.Blog;
+﻿using GG.Portafolio.Entity.Table.Blog;
 using GG.Portafolio.Shared.Test;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -42,7 +41,7 @@ namespace GG.Portafolio.DataBaseBusiness.Test
         {
             try
             {
-                _operation.WithTransaction(_dataBaseConnectionMock.Object, new List<DatabaseOperationModel>
+                _operation.WithTransaction(_dataBaseConnectionMock.Object, new List<DatabaseOperationModel> 
                 {
                     new DatabaseOperationModel
                     {

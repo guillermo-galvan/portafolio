@@ -38,7 +38,7 @@ namespace GG.Portafolio.Site.Generic.Convert
 
         public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
         {
-
+            
         }
 
         private DateTime ConvertToDatetime(string strmiliseconds, string strmilisecondszh = "0")

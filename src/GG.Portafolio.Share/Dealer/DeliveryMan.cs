@@ -12,7 +12,7 @@ namespace GG.Portafolio.Shared.Dealer
         public IEnumerable<DateTime> Dates { get; set; }
 
         public DeliveryMan()
-        { }
+        {}
 
         public DeliveryMan(int id, string name, IEnumerable<DateTime> dates)
         {
@@ -29,7 +29,7 @@ namespace GG.Portafolio.Shared.Dealer
 
         public DeliveryMan GetDeliveryMan()
         {
-            return this with { Id = Id + 1, Name = $"Repartidor {Id + 1}" };
+            return this with { Id = Id + 1 , Name =  $"Repartidor {Id + 1}" };
         }
     }
 }

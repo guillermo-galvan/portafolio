@@ -52,7 +52,7 @@ namespace GG.Portafolio.Api.Test.Controllers
         public void DealerController_Validate_IsType_UserResponse()
         {
             var result = _controller.Validate(new UserRequest
-            {
+            { 
                 Email = "test@gmail.com",
                 Name = "Test",
                 Subject = Guid.NewGuid().ToString(),

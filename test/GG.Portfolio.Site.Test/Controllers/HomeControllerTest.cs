@@ -15,7 +15,6 @@ using System.Threading.Tasks;
 using Xunit;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Mvc.Abstractions;
-using GG.Portafolio.Site.Test;
 
 namespace GG.Portafolio.Site.Test.Controllers
 {
@@ -33,7 +32,7 @@ namespace GG.Portafolio.Site.Test.Controllers
             _httpClient = MockIHttpClientFactory.GetMockHttpClient();
             MockIHttpClientFactory.SetIEnumerableBlogResponse();
 
-            _controller = new(_logger, _httpClient.Object) { TempData = Utilities.GetTempDataDictionary() };
+            _controller = new(_logger, _httpClient.Object) { TempData = Utilities.GetTempDataDictionary()};
         }
 
         [Fact]

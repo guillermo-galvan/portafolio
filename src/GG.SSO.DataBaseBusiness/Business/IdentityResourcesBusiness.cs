@@ -10,12 +10,12 @@ namespace GG.SSO.DataBaseBusiness.Business
     public class IdentityResourcesBusiness
     {
         private readonly ILogger<IdentityResourcesBusiness> _logger;
-        private readonly IdentityResourcesSentences _identityResourcesSentences;
+        private readonly IdentityResourcesSentences _identityResourcesSentences;        
 
-        public IdentityResourcesBusiness(ILogger<IdentityResourcesBusiness> logger,
+        public IdentityResourcesBusiness(ILogger<IdentityResourcesBusiness> logger, 
             IdentityResourcesSentences identityResourcesSentences)
         {
-            _logger = logger;
+            _logger = logger;            
             _identityResourcesSentences = identityResourcesSentences;
         }
 
@@ -46,6 +46,6 @@ namespace GG.SSO.DataBaseBusiness.Business
             }
         }
 
-
+        
     }
 }

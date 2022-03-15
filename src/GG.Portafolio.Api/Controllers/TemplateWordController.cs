@@ -6,11 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using GG.Portafolio.Shared.TemplateWord;
 using GenerateWord;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using GG.Portafolio.Shared;
-using GG.Portafolio.Shared.TemplateWord;
 
 namespace GG.Portafolio.Api.Controllers
 {
@@ -38,7 +38,7 @@ namespace GG.Portafolio.Api.Controllers
             {
                 string path = Path.Combine(_environment.ContentRootPath, $"{TemplateFollder}{Path.DirectorySeparatorChar}Template.docx");
 
-                return new TemplateResponse { File = System.IO.File.ReadAllBytes(path), Extension = ".docx" };
+                return new TemplateResponse { File = System.IO.File.ReadAllBytes(path) , Extension = ".docx" };
             }
             catch (Exception ex)
             {
@@ -106,7 +106,7 @@ namespace GG.Portafolio.Api.Controllers
                     return new TemplateResponse
                     {
                         Extension = typeFile,
-                        File = file
+                        File =  file
                     };
                 }
             }

@@ -25,7 +25,7 @@ namespace GG.Portafolio.BusinessLogic.Test.Dealer
 
         [Fact]
         public void DealerManagement_NotNull()
-        {
+        { 
             Assert.NotNull(new DealerManagement(_logger));
         }
 

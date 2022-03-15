@@ -1,7 +1,5 @@
-﻿using GG.Portafolio.Entity.Table.Blog;
-using GG.Portafolio.Shared.Blog;
+﻿using GG.Portafolio.Shared.Blog;
 using System;
-using BlogComments = GG.Portafolio.Shared.Blog.BlogComments;
 
 namespace GG.Portafolio.BusinessLogic
 {
@@ -14,11 +12,11 @@ namespace GG.Portafolio.BusinessLogic
 
         public static BlogContentReponse ToBlogContentReponse(Entity.Table.Blog.Blog blog)
         {
-            return blog == null ? default : new BlogContentReponse
+            return blog == null ? default : new BlogContentReponse 
             {
-                Id = blog.Id,
-                Dsc = blog.Dsc,
-                Title = blog.Title,
+                Id = blog.Id, 
+                Dsc = blog.Dsc, 
+                Title = blog.Title, 
                 CreateDate = blog.Create,
                 EditDate = blog.Edit
             };
@@ -57,18 +55,18 @@ namespace GG.Portafolio.BusinessLogic
             };
         }
 
-        public static BlogComments ToComment(Entity.Table.Blog.BlogComments blogComments, string userName)
+        public static Shared.Blog.BlogComments ToComment(Entity.Table.Blog.BlogComments blogComments, string userName)
         {
-            return new BlogComments
-            {
+            return new Shared.Blog.BlogComments 
+            { 
                 BlogId = blogComments.Blog_Id,
                 Content = blogComments.Comment,
                 Date = new DateTime(blogComments.Create),
-                Name = string.IsNullOrWhiteSpace(userName) ? "" : userName
+                Name = String.IsNullOrWhiteSpace(userName) ? "" : userName
             };
         }
 
-        public static Entity.Table.Blog.BlogComments ToCommentEntity(BlogComments blogComments)
+        public static Entity.Table.Blog.BlogComments ToCommentEntity(Shared.Blog.BlogComments blogComments)
         {
             return new Entity.Table.Blog.BlogComments
             {

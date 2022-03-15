@@ -13,7 +13,7 @@ namespace GG.Portafolio.DataBaseBusiness.Business
         private readonly ILogger<BlogDetailBusiness> _logger;
 
         public BlogDetailBusiness(BlogDetailSentences blogDetailSentences, ILogger<BlogDetailBusiness> logger)
-        {
+        { 
             _blogDetailSentences = blogDetailSentences;
             _logger = logger;
         }
